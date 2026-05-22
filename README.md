@@ -135,19 +135,20 @@ with:
 
 We recommend using [Quick Submit](https://agentbeats.dev) to submit to leaderboards. Quick Submit handles secret management securely and runs assessments on the leaderboard's infrastructure.
 
-For a registered smoke self-run, trigger `Run Scenario` manually and provide
-`green_agent_id` plus `purple_agent_id`. The workflow patches those IDs into the
-scenario copy used for that run; the checked-in branch keeps ID fields empty
-until public registration is complete.
+The checked-in scenario defaults to the current 5-task `deploy-smoke-v1`
+deployment gate. For a registered smoke self-run, trigger `Run Scenario`
+manually and provide `green_agent_id` plus `purple_agent_id`. The workflow
+patches those IDs into the scenario copy used for that run; the checked-in
+branch keeps ID fields empty until public registration is complete.
 
 The manual workflow can also set `task_set` to a checked-in manifest such as
 `smoke`, `deploy-smoke-v1`, or `standard-v1`. Use `deploy-smoke-v1` for the
-current 5-task AgentBeats deployment gate. When a task set is selected, the workflow patches
-`assessment_config.task_ids` from `task_sets/<task_set>.json`, loads
-`prebuilt_images/<task_set>.json` when present, and preflights that
+current 5-task AgentBeats deployment gate. When a task set is selected, the
+workflow patches `assessment_config.task_ids` from `task_sets/<task_set>.json`,
+loads `prebuilt_images/<task_set>.json` when present, and preflights that
 `skillsbench_worker.config.prebuilt_images` covers every selected task before
-Amber starts. The checked-in `standard-v1` image map covers every selected
-public task, so the full run passes the public image-coverage preflight.
+Amber starts. The checked-in `standard-v1` image map is available for later
+broad-readiness runs, but the deploy gate is intentionally the five-task set.
 
 To publish task images, run `Publish Task Environment Images` manually. Use
 `task_set=standard-v1` and a comma-separated `task_ids` slice for controlled
