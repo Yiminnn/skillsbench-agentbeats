@@ -36,5 +36,9 @@
   "jpg-ocr-stat": "ghcr.io/yiminnn/skillsbench-task-env@sha256:02547f946ae85714e9dd126cd9d88e0a91e6611fb3dd3765a08db40f7c2e8117",
   "lab-unit-harmonization": "ghcr.io/yiminnn/skillsbench-task-env@sha256:ce0dfbe36a598559e5a1632aff3398389da812a6b5a8bf5597fe06edd16c38c2",
   "lake-warming-attribution": "ghcr.io/yiminnn/skillsbench-task-env@sha256:ddc05c2b265df3e2e1779cdc96307b26bc74c28e2b04296ceed092a3f9c75d17",
-  "latex-formula-extraction": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0ee0af524ddbd896aa922a241585b2fc632bce507afb7e37ff50288aaabc9482"
+  "latex-formula-extraction": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0ee0af524ddbd896aa922a241585b2fc632bce507afb7e37ff50288aaabc9482",
+  "lean4-proof": "ghcr.io/yiminnn/skillsbench-task-env@sha256:2e82e6d054f1a52472c227eadceb0180680e02093fb34b86b24bba8e73b2c1d4",
+  "llm-prefix-cache-replay": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c63e12d81f8af357f519d11be7f5fb33380feaf9d14d34aecdfcf28e19516b78",
+  "manufacturing-codebook-normalization": "ghcr.io/yiminnn/skillsbench-task-env@sha256:507693d8a3c3d386427202d60548006d82d40af55be4f7c30bdd3cb4c2292996",
+  "manufacturing-equipment-maintenance": "ghcr.io/yiminnn/skillsbench-task-env@sha256:3583240f67b75fb2699293aa80223ffeefbe5307bfed974284bdde9a41456c7a"
 }
