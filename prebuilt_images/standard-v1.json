@@ -56,5 +56,9 @@
   "protein-expression-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:37a06a9a9773f3989288d8e3ce4d503940262d9bd7942f7f9e87677a707606cd",
   "r2r-mpc-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:54d24ec44e6c86200cd75d794fd179bbc873f253dbd7e6b5a273f99732fda730",
   "reserves-at-risk-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:d0d1a72e94d56e07f6cf1293e7188809c78ed093288555a362d658721b4912e8",
-  "sales-pivot-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8331e83e80fee2f41dcc623061f6c155ec46ccd0af98d09606430cb5fb5bb093"
+  "sales-pivot-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8331e83e80fee2f41dcc623061f6c155ec46ccd0af98d09606430cb5fb5bb093",
+  "shock-analysis-demand": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8d0338ede824bf8ac7cc872ecce08cc8e27c9f120337ef8513d702494558a3c3",
+  "shock-analysis-supply": "ghcr.io/yiminnn/skillsbench-task-env@sha256:70e86af59ba500e31c70fb999b89a5b3d4dc192d3f34e0b45ac2582b2b4ae032",
+  "weighted-gdp-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:38775a37bd0db7581a2bb57345cd7a8ae5c8ff2eeabf4f1e06cb80f933a31008",
+  "xlsx-recover-data": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b812f9d52b43faa70d6f5489d22a7c95e6ce8a5e846a9b471bf489080fc08752"
 }
