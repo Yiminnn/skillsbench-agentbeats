@@ -17,6 +17,14 @@ on:
         description: "Total number of task instances to run across all shards (empty = all)"
         default: ""
         type: string
+      green_agent_id:
+        description: "Registered SkillsBench green AgentBeats UUID (empty keeps scenario metadata)"
+        default: ""
+        type: string
+      purple_agent_id:
+        description: "Registered purple AgentBeats UUID for public result participants (empty keeps scenario metadata)"
+        default: ""
+        type: string
 
 env:
   NUM_SHARDS: ${{ inputs.num_shards || '1' }}
@@ -83,15 +91,35 @@ jobs:
             >> "${GITHUB_ENV}"
 
       - name: Patch shard config into scenario
+        env:
+          GREEN_AGENT_ID: ${{ inputs.green_agent_id || '' }}
+          PURPLE_AGENT_ID: ${{ inputs.purple_agent_id || '' }}
         run: |
+          set -euo pipefail
+          uuid_re='^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
+          if [[ -n "${GREEN_AGENT_ID}" && ! "${GREEN_AGENT_ID}" =~ ${uuid_re} ]]; then
+            echo "green_agent_id must be a registered AgentBeats UUID" >&2
+            exit 1
+          fi
+          if [[ -n "${PURPLE_AGENT_ID}" && ! "${PURPLE_AGENT_ID}" =~ ${uuid_re} ]]; then
+            echo "purple_agent_id must be a registered AgentBeats UUID" >&2
+            exit 1
+          fi
           npx json5 scenario.json5 | jq \
             --argjson shard_index ${{ matrix.shard_index }} \
             --argjson num_shards ${NUM_SHARDS} \
             --argjson num_instances '${{ inputs.num_instances || 'null' }}' \
+            --arg green_agent_id "${GREEN_AGENT_ID}" \
+            --arg purple_agent_id "${PURPLE_AGENT_ID}" \
             '
              .components.gateway.config.assessment_config.shard_index = $shard_index |
              .components.gateway.config.assessment_config.num_shards = $num_shards |
-             if $num_instances then .components.gateway.config.assessment_config.num_instances = $num_instances else . end
+             if $num_instances then .components.gateway.config.assessment_config.num_instances = $num_instances else . end |
+             if $green_agent_id != "" then .metadata.agentbeats_ids.skillsbench_green = $green_agent_id else . end |
+             if $purple_agent_id != "" then
+               .metadata.agentbeats_ids.baseline_agent = $purple_agent_id |
+               .components.gateway.config.assessment_config.participant_ids.agent = $purple_agent_id
+             else . end
             ' > patched.json
           mv patched.json scenario.json5
 

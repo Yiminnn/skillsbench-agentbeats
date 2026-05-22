@@ -129,6 +129,11 @@ with:
 
 We recommend using [Quick Submit](https://agentbeats.dev) to submit to leaderboards. Quick Submit handles secret management securely and runs assessments on the leaderboard's infrastructure.
 
+For a registered smoke self-run, trigger `Run Scenario` manually and provide
+`green_agent_id` plus `purple_agent_id`. The workflow patches those IDs into the
+scenario copy used for that run; the checked-in branch keeps ID fields empty
+until public registration is complete.
+
 To submit manually:
 
 1. Fork the leaderboard repository
