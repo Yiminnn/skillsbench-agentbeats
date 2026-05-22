@@ -134,6 +134,13 @@ For a registered smoke self-run, trigger `Run Scenario` manually and provide
 scenario copy used for that run; the checked-in branch keeps ID fields empty
 until public registration is complete.
 
+For a public-readiness self-run with durable worker proof, also set
+`require_durable_private_proof=true`, `private_proof_uri_prefix` to a durable
+private prefix such as `s3://`, `gs://`, `r2://`, or access-controlled
+`https://`, and `private_proof_retention` to a non-debug retention policy. The
+default branch smoke keeps this disabled because it intentionally uses
+worker-local debug proof storage.
+
 To submit manually:
 
 1. Fork the leaderboard repository
