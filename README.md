@@ -20,7 +20,8 @@ Current public assets:
   existing images, not task-environment Docker builds.
 - `prebuilt_images/*.json`: digest-pinned task-id to image maps used by the
   self-run workflow when `task_set` is selected. `smoke` is complete;
-  `standard-v1` must be generated as task images are published.
+  `standard-v1` is seeded with `citation-check` and must be filled as the
+  remaining task images are published.
 - `.github/workflows/publish-task-env.yml`: manual GHCR publisher for task
   environment images. It builds from the original SkillsBench
   `tasks/<task-id>/environment` directory, writes a merged
