@@ -1,0 +1,35 @@
+{
+  "status": "completed",
+  "participants": {
+    "agent": "019e4ed1-d333-7133-807f-5f22c04d5eef"
+  },
+  "results": [
+    {
+      "task_id": "3d-scan-calc",
+      "trial_id": "worker_error-3d-scan-calc",
+      "task_set": "standard-v1",
+      "task_set_digest": "sha256:5aea60b2c51229b4d91ec6fb37478d5831f0ac6fa62383482c6501090b29d38b",
+      "condition": "with_skills",
+      "score_eligible": false,
+      "passed": false,
+      "reward": 0.0,
+      "max_score": 1.0,
+      "time_used": 0.0,
+      "task_digest": "sha256:dc051a7f7b52dd54d7796f8aca914865b0d73eca81a03fa7eabdd5b58030bf29",
+      "category": "industrial-physical-systems",
+      "difficulty": "hard",
+      "tags": [
+        "binary-parsing",
+        "algorithm",
+        "3d-geometry",
+        "stl"
+      ],
+      "has_skills": true,
+      "agent_transport": "a2a",
+      "participant_role": "agent",
+      "infra_failure_type": "worker_error",
+      "error_type": "worker_error",
+      "artifact_refs": []
+    }
+  ]
+}
