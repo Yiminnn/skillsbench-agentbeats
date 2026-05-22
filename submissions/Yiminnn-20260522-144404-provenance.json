@@ -1,0 +1,24 @@
+{
+  "image_digests": {
+    "/baseline_agent": "ghcr.io/yiminnn/skillsbench-agentbeats-purple@sha256:0ffaa273363680d0f4383087541562dffe2d75fcb22395815647df4cf58384f2",
+    "/gateway": "ghcr.io/rdi-foundation/agentbeats-gateway@sha256:3f9976889c598092dc4273312ec431cbc48bbe064ff65b5613425f4990bc1d4c",
+    "/skillsbench_green": "ghcr.io/yiminnn/skillsbench-agentbeats-green@sha256:9dc28f7e7f49e88f2f03f985a5059c722968cc249bd70421801695b1a84d6c11",
+    "/skillsbench_worker": "ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:541d1ce567dc84d0a33f97c362badc5276be952e374b8658d1d7eb46a674bb7a"
+  },
+  "manifest_digests": {
+    "/": "sha256:kc5JT+iIWyzW+9RidnfmVKO4dfOkxjK556c5aRumoCo=",
+    "/baseline_agent": "sha256:/EWucuRZGg3ndclfHx6Hl7JMFPG1o4wu2YiipR7ydVU=",
+    "/gateway": "sha256:Ba99ymNGSymbrF9jGwLfnZaSnzPrw9sTJ5veaYMxV2Q=",
+    "/skillsbench_green": "sha256:PlIATV1qTfYI0YERagu/DGdMm4kVk87ix72Hht8Zvnk=",
+    "/skillsbench_worker": "sha256:8J7CRVrnMmA+qwXxWPJ1s4kNs98waXaCJSnKxXDDWGw="
+  },
+  "timestamp": "2026-05-22T14:38:18Z",
+  "github_actions": {
+    "run_url": "https://github.com/Yiminnn/skillsbench-agentbeats/actions/runs/26294071005",
+    "ref": "refs/heads/codex/agentbeats-skillsbench-leaderboard",
+    "sha": "a6cc1c712965af3c820b8bf30f2868a6bba126e9",
+    "repository_url": "https://github.com/Yiminnn/skillsbench-agentbeats",
+    "workflow_ref": "Yiminnn/skillsbench-agentbeats/.github/workflows/run-scenario.yml@refs/heads/codex/agentbeats-skillsbench-leaderboard",
+    "workflow_sha": "a6cc1c712965af3c820b8bf30f2868a6bba126e9"
+  }
+}
