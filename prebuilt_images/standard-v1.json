@@ -8,5 +8,9 @@
   "civ6-adjacency-optimizer": "ghcr.io/yiminnn/skillsbench-task-env@sha256:2a83545bf73a0dbd2b131c45a9d9ded1b655107840894084b86238c065f78ab9",
   "court-form-filling": "ghcr.io/yiminnn/skillsbench-task-env@sha256:37bdea4e2b901e0a11724a1a6f79b12921349185e490976d7891d7a1cd08a5e8",
   "crystallographic-wyckoff-position-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a033bc436debc8ab941902912dbee66bc9ced6f41eb8eb93524a23cb8618dccd",
-  "dapt-intrusion-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:cbbcb382e95ef763fe2860cf3e4101fcaa6f0fe8165baaa11b44301e28438326"
+  "dapt-intrusion-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:cbbcb382e95ef763fe2860cf3e4101fcaa6f0fe8165baaa11b44301e28438326",
+  "dialogue-parser": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c7885a97b18332bb9a5853ab26851a5f0fbeca7d04ef8c1c757ad610f13478e6",
+  "drone-planning-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:4c57b9f73b562e8e918088bf71ba6355b02344f3ead09a0596a466a696075ba2",
+  "earthquake-plate-calculation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:6d299fcc079625386155b910988d7032f22550f9968470dc0a8dc4f015fb83a4",
+  "econ-detrending-correlation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:df74fdd1be6802fdb5027602897c10a6dfd20f8ecf02dfdbc1915653a397fd11"
 }
