@@ -54,11 +54,15 @@
   "powerlifting-coef-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c2566e89561d86afdaa524798249dee56a0626a9608c9a6dc4e6c626ee6f7954",
   "pptx-reference-formatting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b1e0b9b7627a01e22696abb008ebc5e85f56661456278948d3315da4a2e5e8f6",
   "protein-expression-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:37a06a9a9773f3989288d8e3ce4d503940262d9bd7942f7f9e87677a707606cd",
+  "python-scala-translation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f628cce5e921d5c550dcd54d10175d8ab00ac7b0dd7195790e0b09a60f4b9674",
   "r2r-mpc-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:54d24ec44e6c86200cd75d794fd179bbc873f253dbd7e6b5a273f99732fda730",
   "reserves-at-risk-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:d0d1a72e94d56e07f6cf1293e7188809c78ed093288555a362d658721b4912e8",
   "sales-pivot-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8331e83e80fee2f41dcc623061f6c155ec46ccd0af98d09606430cb5fb5bb093",
   "shock-analysis-demand": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8d0338ede824bf8ac7cc872ecce08cc8e27c9f120337ef8513d702494558a3c3",
   "shock-analysis-supply": "ghcr.io/yiminnn/skillsbench-task-env@sha256:70e86af59ba500e31c70fb999b89a5b3d4dc192d3f34e0b45ac2582b2b4ae032",
+  "threejs-structure-parser": "ghcr.io/yiminnn/skillsbench-task-env@sha256:5268534782985ee99bf2be0c1e1e2dc82bfab8ec6a7ded92b6760ac9f1331a0a",
+  "threejs-to-obj": "ghcr.io/yiminnn/skillsbench-task-env@sha256:6e60400727304d048e2cf22c298f9eabbf762256a34a99368915d056d420d327",
+  "tictoc-unnecessary-abort-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0bdd6330ecf84afbd885c96b0b22c6738265312df0799e58012e4da25038c588",
   "weighted-gdp-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:38775a37bd0db7581a2bb57345cd7a8ae5c8ff2eeabf4f1e06cb80f933a31008",
   "xlsx-recover-data": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b812f9d52b43faa70d6f5489d22a7c95e6ce8a5e846a9b471bf489080fc08752"
 }
