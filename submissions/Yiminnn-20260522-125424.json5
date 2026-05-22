@@ -1,0 +1,191 @@
+{
+  "manifest_version": "0.4.0",
+  "experimental_features": [
+    "docker"
+  ],
+  "config_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.3/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "task_ids": [
+            "3d-scan-calc",
+            "ada-bathroom-plan-repair",
+            "adaptive-cruise-control",
+            "azure-bgp-oscillation-route-leak",
+            "bike-rebalance",
+            "citation-check",
+            "civ6-adjacency-optimizer",
+            "court-form-filling",
+            "crystallographic-wyckoff-position-analysis",
+            "dapt-intrusion-detection",
+            "data-to-d3",
+            "debug-trl-grpo",
+            "dialogue-parser",
+            "drone-planning-control",
+            "dynamic-object-aware-egomotion",
+            "earthquake-phase-association",
+            "earthquake-plate-calculation",
+            "econ-detrending-correlation",
+            "edit-pdf",
+            "energy-ac-optimal-power-flow",
+            "energy-market-pricing",
+            "energy-unit-commitment",
+            "enterprise-information-search",
+            "exam-block-sequencing",
+            "exceltable-in-ppt",
+            "exoplanet-detection-period",
+            "financial-modeling-qa",
+            "find-topk-similiar-chemicals",
+            "fix-build-agentops",
+            "fix-build-google-auto",
+            "fix-druid-loophole-cve",
+            "fix-erlang-ssh-cve",
+            "fix-visual-stability",
+            "flink-query",
+            "flood-risk-analysis",
+            "gh-repo-analytics",
+            "glm-lake-mendota",
+            "gravitational-wave-detection",
+            "grid-dispatch-operator",
+            "hvac-control",
+            "invoice-fraud-detection",
+            "jax-computing-basics",
+            "jpg-ocr-stat",
+            "lab-unit-harmonization",
+            "lake-warming-attribution",
+            "latex-formula-extraction",
+            "lean4-proof",
+            "llm-prefix-cache-replay",
+            "manufacturing-codebook-normalization",
+            "manufacturing-equipment-maintenance",
+            "manufacturing-fjsp-optimization",
+            "mario-coin-counting",
+            "mars-clouds-clustering",
+            "multilingual-video-dubbing",
+            "offer-letter-generator",
+            "organize-messy-files",
+            "paper-anonymizer",
+            "parallel-tfidf-search",
+            "paratransit-routing",
+            "pddl-airport-planning",
+            "pddl-tpp-planning",
+            "pdf-excel-diff",
+            "pedestrian-traffic-counting",
+            "pg-essay-to-audiobook",
+            "powerlifting-coef-calc",
+            "pptx-reference-formatting",
+            "protein-expression-analysis",
+            "python-scala-translation",
+            "quantum-numerical-simulation",
+            "r2r-mpc-control",
+            "radar-vital-signs",
+            "react-performance-debugging",
+            "reserves-at-risk-calc",
+            "sales-pivot-analysis",
+            "sec-financial-report",
+            "seismic-phase-picking",
+            "setup-fuzzing-py",
+            "shock-analysis-demand",
+            "shock-analysis-supply",
+            "simpo-code-reproduction",
+            "software-dependency-audit",
+            "spring-boot-jakarta-migration",
+            "suricata-custom-exfil",
+            "syzkaller-ppdev-syzlang",
+            "taxonomy-tree-merge",
+            "threejs-structure-parser",
+            "threejs-to-obj",
+            "tictoc-unnecessary-abort-detection",
+            "travel-planning",
+            "video-filler-word-remover",
+            "video-silence-remover",
+            "video-tutorial-indexer",
+            "weighted-gdp-calc",
+            "xlsx-recover-data"
+          ],
+          "task_set": "standard-v1",
+          "condition": "with_skills",
+          "allow_excluded_tasks": false,
+          "shard_index": 0,
+          "num_shards": 1,
+          "participant_ids": {
+            "agent": "019e4ed1-d333-7133-807f-5f22c04d5eef"
+          }
+        },
+        "participant_roles": {
+          "green": "skillsbench_green",
+          "purple1": "agent"
+        }
+      }
+    },
+    "skillsbench_green": {
+      "manifest": "./green-agent.json5",
+      "config": {
+        "worker_url": "",
+        "worker_timeout_sec": 3600,
+        "worker_poll_interval_sec": 1
+      }
+    },
+    "skillsbench_worker": {
+      "manifest": "./worker.json5",
+      "config": {
+        "worker_revision": "sha256:ce5ceebf54135bf8e86ab4ddc8b8cc2a4c387914503e2fad1e052f197453a1bc",
+        "skillsbench_revision": "f93e1750",
+        "benchflow_revision": "agentbeats-a2a-adapter-audit-public-image",
+        "worker_image": "ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:ce5ceebf54135bf8e86ab4ddc8b8cc2a4c387914503e2fad1e052f197453a1bc",
+        "worker_image_digest": "sha256:ce5ceebf54135bf8e86ab4ddc8b8cc2a4c387914503e2fad1e052f197453a1bc",
+        "prebuilt_images": "{\"3d-scan-calc\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:68d72a43086011a1df56833eb4d6f606594e3bafd08ed4b9524372df90a8f371\",\"ada-bathroom-plan-repair\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:ab31859533b820a0f403d0877c7daabb1f0bb5991f73a409ceac9221763dd6f1\",\"adaptive-cruise-control\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:3474895360003b0a6e79d35da0fd6cc5c729ecb6ba94e6edf7bfd741490a48b5\",\"azure-bgp-oscillation-route-leak\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:45cf8ab6594bd2e1073959fc3a48e4f1e71f21ac7dce1d0c7884380657aed9a6\",\"bike-rebalance\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:9fd1ada3d689090e01de21a9189e51bb93d1613bdef375d425b8b83841975375\",\"citation-check\":\"ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:8ba4740e9edfe7bb0d071c6e64f788e5652a47fc24fc0e7c74bdb2f896877233\",\"civ6-adjacency-optimizer\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:2a83545bf73a0dbd2b131c45a9d9ded1b655107840894084b86238c065f78ab9\",\"court-form-filling\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:37bdea4e2b901e0a11724a1a6f79b12921349185e490976d7891d7a1cd08a5e8\",\"crystallographic-wyckoff-position-analysis\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:a033bc436debc8ab941902912dbee66bc9ced6f41eb8eb93524a23cb8618dccd\",\"dapt-intrusion-detection\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:cbbcb382e95ef763fe2860cf3e4101fcaa6f0fe8165baaa11b44301e28438326\",\"data-to-d3\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:76851ff97cb79854c1b078b1b5fd395d92b738e37e63e4e800a5dda7032b7b44\",\"debug-trl-grpo\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:38a2f3910fb5adf693e7635119687e05537f028a733fb6be20e64d8c9b7d2ca3\",\"dialogue-parser\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:c7885a97b18332bb9a5853ab26851a5f0fbeca7d04ef8c1c757ad610f13478e6\",\"drone-planning-control\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:4c57b9f73b562e8e918088bf71ba6355b02344f3ead09a0596a466a696075ba2\",\"dynamic-object-aware-egomotion\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:db25e78d4d0420199a9bbe11498cff736fc7cd2e0b23d6fb1b6fd1f1f2eddb7d\",\"earthquake-phase-association\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:d758f867b6e2ecb12999f9d5244d81085f46a0b456a239a2bc5e9f7a325854e2\",\"earthquake-plate-calculation\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:6d299fcc079625386155b910988d7032f22550f9968470dc0a8dc4f015fb83a4\",\"econ-detrending-correlation\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:df74fdd1be6802fdb5027602897c10a6dfd20f8ecf02dfdbc1915653a397fd11\",\"edit-pdf\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:f605e300708448f398bcb70c62279895c090504319700d1d78764528625b5639\",\"energy-ac-optimal-power-flow\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:cd48e4f117f5d93f3e3a1f292b7aaa59e68ac73be5f6bba117b71c9f6267535d\",\"energy-market-pricing\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:28f3dde522912258eaa45e040ec2b67b8d4ee524be3170c6729d8f95b467b735\",\"energy-unit-commitment\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:a485ea5a0eb1531e905088bf0ec889778287ebb44ef81db8320c598939187643\",\"enterprise-information-search\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:13225f451ec10e6366a68bb769fb21c1e2d6ce3058feb859ab2f4f4fd61e73a3\",\"exam-block-sequencing\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:607259b2098062b471f7b83ef3066500f55bf10f226fb795823e477af8207b92\",\"exceltable-in-ppt\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:944f51bd1e2416262007e1a558a92650c2232176af06363cc6011ea94dad8526\",\"exoplanet-detection-period\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:8b2236ce91f0596922320b6b8284365ec2cdf7da868f8471f2bec347e615ff25\",\"financial-modeling-qa\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:4ff9171878f6c16c5eff086eb0f144587ac8e3fa9962894a7804513eda59a82a\",\"find-topk-similiar-chemicals\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:5995304f66cc473d2b6a8c1e1152a2d53e9eb414d71d4dc37b539ed442f1acdf\",\"fix-build-agentops\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:e928d7c98f4335e7e4ad2cfbe9bda288f885f3c78e7c9e1c28aaa21001875a34\",\"fix-build-google-auto\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:a2326496ff645a59422edb266dfae45dd786789d65f6e28204ad82209fddd571\",\"fix-druid-loophole-cve\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:1d56094f59ffe072f828f1a62c6d3a406c5c3626cb1e6870d60cb3a7c42cbddf\",\"fix-erlang-ssh-cve\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:19afc1ee70cc4bc5391a9841e137cf4c0dba9eed2a077153b8b5622116b22ad2\",\"fix-visual-stability\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:1c2a58a8e6be0fa1996a2d2c18730aa9510e0c83b818853491d5f1a8688f42b3\",\"flink-query\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:5f60f63a7c5325c9b042506d8bdcdc9aa4cce471de5a127a3ad51e42bc76c1ec\",\"flood-risk-analysis\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:f60fed5738fcc15bda14836de8674340146cd35fad293c5cf6524baeeb41513d\",\"gh-repo-analytics\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:d6ad0d6292a272cac7fd6e54c51446ff331e48026e93239cf3901dce67d77268\",\"glm-lake-mendota\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:3296acef9307af9d386a327d12c8a8a43c1cc118bf00acac71d49667c30638a9\",\"gravitational-wave-detection\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:e924a78d1b35895a5d2b2feeb15034c7f280ed9fe171663d93286e2f3d0fef15\",\"grid-dispatch-operator\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:b82c9270b5e9a37de2586fd694aa12fbc62448289da7ba321e50337039ae98a5\",\"hvac-control\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:28a54dd13b4fc415114c6ae54e7ed9e5d260fb3ee0e4e6895ddee84cbb6a9431\",\"invoice-fraud-detection\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:0739fb79fe49378e62d62bdea7f6af9398cb36edcdc3580dceb23d8ec6db9ea2\",\"jax-computing-basics\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:c5c2c1f482b7c4029ba7b08164402b2f27115afa4cceaef7f4248da44449018b\",\"jpg-ocr-stat\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:02547f946ae85714e9dd126cd9d88e0a91e6611fb3dd3765a08db40f7c2e8117\",\"lab-unit-harmonization\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:ce0dfbe36a598559e5a1632aff3398389da812a6b5a8bf5597fe06edd16c38c2\",\"lake-warming-attribution\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:ddc05c2b265df3e2e1779cdc96307b26bc74c28e2b04296ceed092a3f9c75d17\",\"latex-formula-extraction\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:0ee0af524ddbd896aa922a241585b2fc632bce507afb7e37ff50288aaabc9482\",\"lean4-proof\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:2e82e6d054f1a52472c227eadceb0180680e02093fb34b86b24bba8e73b2c1d4\",\"llm-prefix-cache-replay\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:c63e12d81f8af357f519d11be7f5fb33380feaf9d14d34aecdfcf28e19516b78\",\"manufacturing-codebook-normalization\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:507693d8a3c3d386427202d60548006d82d40af55be4f7c30bdd3cb4c2292996\",\"manufacturing-equipment-maintenance\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:3583240f67b75fb2699293aa80223ffeefbe5307bfed974284bdde9a41456c7a\",\"manufacturing-fjsp-optimization\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:767f167689355b88274bc420af722daa7fc7404a8113aa68add56b2c35ea1199\",\"mario-coin-counting\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:563372a42bc837843ab66931348e619c8728a4816546262338d0f6bbe0085faa\",\"mars-clouds-clustering\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:33b0d02cab51c9afa5a5c9c29ff8bbd092e69273ce5ed1bfa1d9ceb92dda527c\",\"multilingual-video-dubbing\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:3a70b02e36cfe6612c9921ec7278d595502032cecaa0200f8377662787352c1c\",\"offer-letter-generator\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:92a50feb1057ca03680a1fca2c3631651911cf58f735584a7d18c797056ea5b4\",\"organize-messy-files\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:a8bcaa03a5035acdb87ab1415d3b87f4122d4d15f30bb5306d4c509dbc3826a5\",\"paper-anonymizer\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:f7291884032d4070f5a8b37dcaa734b6848261cf7372f79e88c50afc8a3b1859\",\"parallel-tfidf-search\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:9710026960f9f5886c15e9e6f9f17ca244d82e296ada016e9e8f0aea04cd8302\",\"paratransit-routing\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:87391430adef82e368a56a5cc95ec2c4b2c45ba2c6b097782affee2bc7731ac1\",\"pddl-airport-planning\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:9ff2118f587eab73df82c2ede3073894ceb360d4dd75f05e61467c6d3d53c014\",\"pddl-tpp-planning\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:51ef97b3c5a2c5b7118302abac4f2a6afa127803f34f3d13ca3ad7777fde364f\",\"pdf-excel-diff\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:f831f32e1cc803562a706f645abec0729ddbe9664538308eba04a637e2f95ace\",\"pedestrian-traffic-counting\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:179137419174b3ed465f336d1eeac28a9371b1a3490508105ca7c3f1ba705ba8\",\"pg-essay-to-audiobook\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:1feeec2f267aab0fc9535cd9d1341ef7f7f4bc567994aa6b8e4290bf75af6f39\",\"powerlifting-coef-calc\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:c2566e89561d86afdaa524798249dee56a0626a9608c9a6dc4e6c626ee6f7954\",\"pptx-reference-formatting\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:b1e0b9b7627a01e22696abb008ebc5e85f56661456278948d3315da4a2e5e8f6\",\"protein-expression-analysis\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:37a06a9a9773f3989288d8e3ce4d503940262d9bd7942f7f9e87677a707606cd\",\"python-scala-translation\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:f628cce5e921d5c550dcd54d10175d8ab00ac7b0dd7195790e0b09a60f4b9674\",\"quantum-numerical-simulation\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:0034c507bb47fac7a3c5a45e1c8b5e1a7b9feef00206422af4fe944d62940584\",\"r2r-mpc-control\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:54d24ec44e6c86200cd75d794fd179bbc873f253dbd7e6b5a273f99732fda730\",\"radar-vital-signs\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:0a216195d22cf3ea460519f24fefa6fceafc7ab2606ba5e4ec24c5134c227750\",\"react-performance-debugging\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:a967c9c6fbfd2af65f951bdc617f114915d222c7a13efebbf7a598d6e40a5ee5\",\"reserves-at-risk-calc\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:d0d1a72e94d56e07f6cf1293e7188809c78ed093288555a362d658721b4912e8\",\"sales-pivot-analysis\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:8331e83e80fee2f41dcc623061f6c155ec46ccd0af98d09606430cb5fb5bb093\",\"sec-financial-report\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:1ae0457c11682e66ffced93eb5ce6e166a1469cb28a2a4e4c9f82a71648338c4\",\"seismic-phase-picking\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:51499fde97b89cab782fd28705827d38541bcabb2ad81bfcd6a7fdd436d1ad73\",\"setup-fuzzing-py\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:ec9f6a3011edde2a04f942d7776ec213564871ec7330b201dd52d50656ae48f2\",\"shock-analysis-demand\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:8d0338ede824bf8ac7cc872ecce08cc8e27c9f120337ef8513d702494558a3c3\",\"shock-analysis-supply\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:70e86af59ba500e31c70fb999b89a5b3d4dc192d3f34e0b45ac2582b2b4ae032\",\"simpo-code-reproduction\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:87f27aa448b367bcc31680df3e5c0ef5641c16e9bbb31f3c52dcfcd7ae444c69\",\"software-dependency-audit\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:25ddbde24e0c08a3ab611c681030bd6995b4d8115950b7f48757f1fc77088e3b\",\"spring-boot-jakarta-migration\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:6e915717ede4aa330d3281212a0b669f1e82a7b0e096a3d4148e5c7e40f5cfad\",\"suricata-custom-exfil\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:f399a3090844e959ae32724cc136756a6e10b8528c8d4a249cb2fb92dc2191b9\",\"syzkaller-ppdev-syzlang\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:5f9ddac6dacfc532747050925d32fcf10fd95958b51e9e66a61b45d37523a3df\",\"taxonomy-tree-merge\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:7fae56f2f99ef0080285e08770037df16f2e467465b3ff1b49b452da9a50a97b\",\"threejs-structure-parser\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:5268534782985ee99bf2be0c1e1e2dc82bfab8ec6a7ded92b6760ac9f1331a0a\",\"threejs-to-obj\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:6e60400727304d048e2cf22c298f9eabbf762256a34a99368915d056d420d327\",\"tictoc-unnecessary-abort-detection\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:0bdd6330ecf84afbd885c96b0b22c6738265312df0799e58012e4da25038c588\",\"travel-planning\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:28b6e6494519ed5a6d043820af91799a424788e9ea682443a7ce733791b8a448\",\"video-filler-word-remover\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:b6e7017ce06eea7dd5932bc362b971621ac712bb014b6654254524a1f31d5e8a\",\"video-silence-remover\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:843855a0908fa08bb63c547394bd97c2ae40d2c04ae73a5e6f9755a57ae474c0\",\"video-tutorial-indexer\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:c6586ea2f414a70b34207917dea0c242d17de4ea9f5a9072fd9029aa02bccc1f\",\"weighted-gdp-calc\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:38775a37bd0db7581a2bb57345cd7a8ae5c8ff2eeabf4f1e06cb80f933a31008\",\"xlsx-recover-data\":\"ghcr.io/yiminnn/skillsbench-task-env@sha256:b812f9d52b43faa70d6f5489d22a7c95e6ce8a5e846a9b471bf489080fc08752\"}",
+        "private_proof_dir": "jobs/agentbeats-private-proof",
+        "private_proof_uri_prefix": "local://agentbeats-private-proof",
+        "private_proof_retention": "github-actions-smoke-debug-only",
+        "require_durable_private_proof": false,
+        "jobs_dir": "jobs/agentbeats-worker",
+        "environment": "docker"
+      }
+    },
+    "baseline_agent": {
+      "manifest": "./participant-placeholder.json5",
+      "config": {}
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#skillsbench_green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#baseline_agent.a2a"
+    },
+    {
+      "to": "#skillsbench_green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true
+    },
+    {
+      "to": "#skillsbench_green.worker",
+      "from": "#skillsbench_worker.http"
+    },
+    {
+      "to": "#skillsbench_worker.proxy",
+      "from": "#gateway.proxy",
+      "weak": true
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "skillsbench_green": "019e4ecb-4b5b-7481-b6f4-85ad93336437",
+      "baseline_agent": "019e4ed1-d333-7133-807f-5f22c04d5eef"
+    },
+    "worker_mode": "in_scenario_worker"
+  }
+}
