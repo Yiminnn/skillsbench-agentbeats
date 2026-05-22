@@ -36,11 +36,11 @@
     skillsbench_worker: {
       manifest: "./worker.json5",
       config: {
-        worker_revision: "sha256:ce5ceebf54135bf8e86ab4ddc8b8cc2a4c387914503e2fad1e052f197453a1bc",
-        skillsbench_revision: "f93e1750",
-        benchflow_revision: "agentbeats-a2a-adapter-audit-public-image",
-        worker_image: "ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:ce5ceebf54135bf8e86ab4ddc8b8cc2a4c387914503e2fad1e052f197453a1bc",
-        worker_image_digest: "sha256:ce5ceebf54135bf8e86ab4ddc8b8cc2a4c387914503e2fad1e052f197453a1bc",
+        worker_revision: "sha256:4e0e459acdbc42e38be21c2a255209325549c1c6e829ceb3f34ec870a655b677",
+        skillsbench_revision: "e49b7c47",
+        benchflow_revision: "7f295084da2b7ccc7c9345ee2a64927cc8f36433",
+        worker_image: "ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:4e0e459acdbc42e38be21c2a255209325549c1c6e829ceb3f34ec870a655b677",
+        worker_image_digest: "sha256:4e0e459acdbc42e38be21c2a255209325549c1c6e829ceb3f34ec870a655b677",
         prebuilt_images: "{\"citation-check\":\"ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:ab820ad2058610a955264b26247f4a78f59c52fac81f25b42e3616ac8e29fff4\"}",
         private_proof_dir: "jobs/agentbeats-private-proof",
         private_proof_uri_prefix: "local://agentbeats-private-proof",
