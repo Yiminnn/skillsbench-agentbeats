@@ -17,6 +17,10 @@ on:
         description: "Total number of task instances to run across all shards (empty = all)"
         default: ""
         type: string
+      task_set:
+        description: "Optional public task-set manifest name (empty keeps scenario metadata)"
+        default: ""
+        type: string
       green_agent_id:
         description: "Registered SkillsBench green AgentBeats UUID (empty keeps scenario metadata)"
         default: ""
@@ -106,12 +110,14 @@ jobs:
         env:
           GREEN_AGENT_ID: ${{ inputs.green_agent_id || '' }}
           PURPLE_AGENT_ID: ${{ inputs.purple_agent_id || '' }}
+          TASK_SET_INPUT: ${{ inputs.task_set || '' }}
           REQUIRE_DURABLE_PRIVATE_PROOF: ${{ inputs.require_durable_private_proof && 'true' || 'false' }}
           PRIVATE_PROOF_URI_PREFIX: ${{ inputs.private_proof_uri_prefix || '' }}
           PRIVATE_PROOF_RETENTION: ${{ inputs.private_proof_retention || '' }}
         run: |
           set -euo pipefail
           uuid_re='^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
+          task_set_re='^[A-Za-z0-9_.-]+$'
           durable_uri_re='^(s3|gs|r2|https)://'
           if [[ -n "${GREEN_AGENT_ID}" && ! "${GREEN_AGENT_ID}" =~ ${uuid_re} ]]; then
             echo "green_agent_id must be a registered AgentBeats UUID" >&2
@@ -120,6 +126,19 @@ jobs:
           if [[ -n "${PURPLE_AGENT_ID}" && ! "${PURPLE_AGENT_ID}" =~ ${uuid_re} ]]; then
             echo "purple_agent_id must be a registered AgentBeats UUID" >&2
             exit 1
+          fi
+          task_set_manifest='null'
+          if [[ -n "${TASK_SET_INPUT}" ]]; then
+            if [[ ! "${TASK_SET_INPUT}" =~ ${task_set_re} ]]; then
+              echo "task_set must be a direct task_sets/*.json manifest name" >&2
+              exit 1
+            fi
+            task_set_path="task_sets/${TASK_SET_INPUT}.json"
+            if [[ ! -f "${task_set_path}" ]]; then
+              echo "task_set manifest not found: ${task_set_path}" >&2
+              exit 1
+            fi
+            task_set_manifest="$(jq -c . "${task_set_path}")"
           fi
           if [[ "${REQUIRE_DURABLE_PRIVATE_PROOF}" == "true" ]]; then
             if [[ ! "${PRIVATE_PROOF_URI_PREFIX}" =~ ${durable_uri_re} ]]; then
@@ -146,6 +165,7 @@ jobs:
             --argjson shard_index ${{ matrix.shard_index }} \
             --argjson num_shards ${NUM_SHARDS} \
             --argjson num_instances '${{ inputs.num_instances || 'null' }}' \
+            --argjson task_set_manifest "${task_set_manifest}" \
             --arg green_agent_id "${GREEN_AGENT_ID}" \
             --arg purple_agent_id "${PURPLE_AGENT_ID}" \
             --argjson require_durable_private_proof "${REQUIRE_DURABLE_PRIVATE_PROOF}" \
@@ -154,6 +174,12 @@ jobs:
             '
              .components.gateway.config.assessment_config.shard_index = $shard_index |
              .components.gateway.config.assessment_config.num_shards = $num_shards |
+             if $task_set_manifest then
+               .components.gateway.config.assessment_config.task_set = $task_set_manifest.task_set |
+               .components.gateway.config.assessment_config.task_ids = ($task_set_manifest.tasks | map(.task_id)) |
+               .components.gateway.config.assessment_config.condition = $task_set_manifest.condition |
+               .components.gateway.config.assessment_config.allow_excluded_tasks = $task_set_manifest.allow_excluded_tasks
+             else . end |
              if $num_instances then .components.gateway.config.assessment_config.num_instances = $num_instances else . end |
              if $green_agent_id != "" then .metadata.agentbeats_ids.skillsbench_green = $green_agent_id else . end |
              if $purple_agent_id != "" then
@@ -166,6 +192,15 @@ jobs:
                .components.skillsbench_worker.config.private_proof_retention = $private_proof_retention
              else . end
             ' > patched.json
+          missing_prebuilt_tasks=$(jq -r '
+            (.components.gateway.config.assessment_config.task_ids // []) as $task_ids |
+            (.components.skillsbench_worker.config.prebuilt_images | fromjson) as $prebuilt |
+            [$task_ids[] | select(($prebuilt[.] // "") == "")] | @tsv
+          ' patched.json)
+          if [[ -n "${missing_prebuilt_tasks}" ]]; then
+            echo "prebuilt_images must cover every selected task before public self-run: ${missing_prebuilt_tasks}" >&2
+            exit 1
+          fi
           mv patched.json scenario.json5
 
       - name: Install amber CLI
@@ -343,12 +378,14 @@ jobs:
         env:
           GREEN_AGENT_ID: ${{ inputs.green_agent_id || '' }}
           PURPLE_AGENT_ID: ${{ inputs.purple_agent_id || '' }}
+          TASK_SET_INPUT: ${{ inputs.task_set || '' }}
           REQUIRE_DURABLE_PRIVATE_PROOF: ${{ inputs.require_durable_private_proof && 'true' || 'false' }}
           PRIVATE_PROOF_URI_PREFIX: ${{ inputs.private_proof_uri_prefix || '' }}
           PRIVATE_PROOF_RETENTION: ${{ inputs.private_proof_retention || '' }}
         run: |
           set -euo pipefail
           uuid_re='^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
+          task_set_re='^[A-Za-z0-9_.-]+$'
           durable_uri_re='^(s3|gs|r2|https)://'
           if [[ -n "${GREEN_AGENT_ID}" && ! "${GREEN_AGENT_ID}" =~ ${uuid_re} ]]; then
             echo "green_agent_id must be a registered AgentBeats UUID" >&2
@@ -357,6 +394,19 @@ jobs:
           if [[ -n "${PURPLE_AGENT_ID}" && ! "${PURPLE_AGENT_ID}" =~ ${uuid_re} ]]; then
             echo "purple_agent_id must be a registered AgentBeats UUID" >&2
             exit 1
+          fi
+          task_set_manifest='null'
+          if [[ -n "${TASK_SET_INPUT}" ]]; then
+            if [[ ! "${TASK_SET_INPUT}" =~ ${task_set_re} ]]; then
+              echo "task_set must be a direct task_sets/*.json manifest name" >&2
+              exit 1
+            fi
+            task_set_path="task_sets/${TASK_SET_INPUT}.json"
+            if [[ ! -f "${task_set_path}" ]]; then
+              echo "task_set manifest not found: ${task_set_path}" >&2
+              exit 1
+            fi
+            task_set_manifest="$(jq -c . "${task_set_path}")"
           fi
           if [[ "${REQUIRE_DURABLE_PRIVATE_PROOF}" == "true" ]]; then
             if [[ ! "${PRIVATE_PROOF_URI_PREFIX}" =~ ${durable_uri_re} ]]; then
@@ -380,12 +430,19 @@ jobs:
             exit 1
           fi
           npx json5 scenario.json5 | jq \
+            --argjson task_set_manifest "${task_set_manifest}" \
             --arg green_agent_id "${GREEN_AGENT_ID}" \
             --arg purple_agent_id "${PURPLE_AGENT_ID}" \
             --argjson require_durable_private_proof "${REQUIRE_DURABLE_PRIVATE_PROOF}" \
             --arg private_proof_uri_prefix "${PRIVATE_PROOF_URI_PREFIX}" \
             --arg private_proof_retention "${PRIVATE_PROOF_RETENTION}" \
             '
+             if $task_set_manifest then
+               .components.gateway.config.assessment_config.task_set = $task_set_manifest.task_set |
+               .components.gateway.config.assessment_config.task_ids = ($task_set_manifest.tasks | map(.task_id)) |
+               .components.gateway.config.assessment_config.condition = $task_set_manifest.condition |
+               .components.gateway.config.assessment_config.allow_excluded_tasks = $task_set_manifest.allow_excluded_tasks
+             else . end |
              if $green_agent_id != "" then .metadata.agentbeats_ids.skillsbench_green = $green_agent_id else . end |
              if $purple_agent_id != "" then
                .metadata.agentbeats_ids.baseline_agent = $purple_agent_id |

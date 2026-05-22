@@ -134,6 +134,14 @@ For a registered smoke self-run, trigger `Run Scenario` manually and provide
 scenario copy used for that run; the checked-in branch keeps ID fields empty
 until public registration is complete.
 
+The manual workflow can also set `task_set` to a checked-in manifest such as
+`smoke` or `standard-v1`. When a task set is selected, the workflow patches
+`assessment_config.task_ids` from `task_sets/<task_set>.json` and preflights
+that `skillsbench_worker.config.prebuilt_images` covers every selected task
+before Amber starts. The current branch only covers `citation-check`; a full
+`standard-v1` run requires publishing digest-pinned task environment images for
+the remaining tasks first.
+
 For a public-readiness self-run with durable worker proof, also set
 `require_durable_private_proof=true`, `private_proof_uri_prefix` to a durable
 private prefix such as `s3://`, `gs://`, `r2://`, or access-controlled
