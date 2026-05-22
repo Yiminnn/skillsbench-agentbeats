@@ -12,5 +12,9 @@
   "dialogue-parser": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c7885a97b18332bb9a5853ab26851a5f0fbeca7d04ef8c1c757ad610f13478e6",
   "drone-planning-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:4c57b9f73b562e8e918088bf71ba6355b02344f3ead09a0596a466a696075ba2",
   "earthquake-plate-calculation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:6d299fcc079625386155b910988d7032f22550f9968470dc0a8dc4f015fb83a4",
-  "econ-detrending-correlation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:df74fdd1be6802fdb5027602897c10a6dfd20f8ecf02dfdbc1915653a397fd11"
+  "econ-detrending-correlation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:df74fdd1be6802fdb5027602897c10a6dfd20f8ecf02dfdbc1915653a397fd11",
+  "edit-pdf": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f605e300708448f398bcb70c62279895c090504319700d1d78764528625b5639",
+  "energy-ac-optimal-power-flow": "ghcr.io/yiminnn/skillsbench-task-env@sha256:cd48e4f117f5d93f3e3a1f292b7aaa59e68ac73be5f6bba117b71c9f6267535d",
+  "energy-market-pricing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:28f3dde522912258eaa45e040ec2b67b8d4ee524be3170c6729d8f95b467b735",
+  "energy-unit-commitment": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a485ea5a0eb1531e905088bf0ec889778287ebb44ef81db8320c598939187643"
 }
