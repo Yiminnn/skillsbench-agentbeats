@@ -128,6 +128,7 @@ jobs:
             exit 1
           fi
           task_set_manifest='null'
+          prebuilt_manifest='null'
           if [[ -n "${TASK_SET_INPUT}" ]]; then
             if [[ ! "${TASK_SET_INPUT}" =~ ${task_set_re} ]]; then
               echo "task_set must be a direct task_sets/*.json manifest name" >&2
@@ -139,6 +140,14 @@ jobs:
               exit 1
             fi
             task_set_manifest="$(jq -c . "${task_set_path}")"
+            prebuilt_path="prebuilt_images/${TASK_SET_INPUT}.json"
+            if [[ -f "${prebuilt_path}" ]]; then
+              jq -e '
+                type == "object" and
+                all(to_entries[]; (.key | type == "string") and (.value | type == "string" and contains("@sha256:")))
+              ' "${prebuilt_path}" >/dev/null
+              prebuilt_manifest="$(jq -c . "${prebuilt_path}")"
+            fi
           fi
           if [[ "${REQUIRE_DURABLE_PRIVATE_PROOF}" == "true" ]]; then
             if [[ ! "${PRIVATE_PROOF_URI_PREFIX}" =~ ${durable_uri_re} ]]; then
@@ -166,6 +175,7 @@ jobs:
             --argjson num_shards ${NUM_SHARDS} \
             --argjson num_instances '${{ inputs.num_instances || 'null' }}' \
             --argjson task_set_manifest "${task_set_manifest}" \
+            --argjson prebuilt_manifest "${prebuilt_manifest}" \
             --arg green_agent_id "${GREEN_AGENT_ID}" \
             --arg purple_agent_id "${PURPLE_AGENT_ID}" \
             --argjson require_durable_private_proof "${REQUIRE_DURABLE_PRIVATE_PROOF}" \
@@ -179,6 +189,9 @@ jobs:
                .components.gateway.config.assessment_config.task_ids = ($task_set_manifest.tasks | map(.task_id)) |
                .components.gateway.config.assessment_config.condition = $task_set_manifest.condition |
                .components.gateway.config.assessment_config.allow_excluded_tasks = $task_set_manifest.allow_excluded_tasks
+             else . end |
+             if $prebuilt_manifest then
+               .components.skillsbench_worker.config.prebuilt_images = ($prebuilt_manifest | tojson)
              else . end |
              if $num_instances then .components.gateway.config.assessment_config.num_instances = $num_instances else . end |
              if $green_agent_id != "" then .metadata.agentbeats_ids.skillsbench_green = $green_agent_id else . end |
@@ -396,6 +409,7 @@ jobs:
             exit 1
           fi
           task_set_manifest='null'
+          prebuilt_manifest='null'
           if [[ -n "${TASK_SET_INPUT}" ]]; then
             if [[ ! "${TASK_SET_INPUT}" =~ ${task_set_re} ]]; then
               echo "task_set must be a direct task_sets/*.json manifest name" >&2
@@ -407,6 +421,14 @@ jobs:
               exit 1
             fi
             task_set_manifest="$(jq -c . "${task_set_path}")"
+            prebuilt_path="prebuilt_images/${TASK_SET_INPUT}.json"
+            if [[ -f "${prebuilt_path}" ]]; then
+              jq -e '
+                type == "object" and
+                all(to_entries[]; (.key | type == "string") and (.value | type == "string" and contains("@sha256:")))
+              ' "${prebuilt_path}" >/dev/null
+              prebuilt_manifest="$(jq -c . "${prebuilt_path}")"
+            fi
           fi
           if [[ "${REQUIRE_DURABLE_PRIVATE_PROOF}" == "true" ]]; then
             if [[ ! "${PRIVATE_PROOF_URI_PREFIX}" =~ ${durable_uri_re} ]]; then
@@ -431,6 +453,7 @@ jobs:
           fi
           npx json5 scenario.json5 | jq \
             --argjson task_set_manifest "${task_set_manifest}" \
+            --argjson prebuilt_manifest "${prebuilt_manifest}" \
             --arg green_agent_id "${GREEN_AGENT_ID}" \
             --arg purple_agent_id "${PURPLE_AGENT_ID}" \
             --argjson require_durable_private_proof "${REQUIRE_DURABLE_PRIVATE_PROOF}" \
@@ -442,6 +465,9 @@ jobs:
                .components.gateway.config.assessment_config.task_ids = ($task_set_manifest.tasks | map(.task_id)) |
                .components.gateway.config.assessment_config.condition = $task_set_manifest.condition |
                .components.gateway.config.assessment_config.allow_excluded_tasks = $task_set_manifest.allow_excluded_tasks
+             else . end |
+             if $prebuilt_manifest then
+               .components.skillsbench_worker.config.prebuilt_images = ($prebuilt_manifest | tojson)
              else . end |
              if $green_agent_id != "" then .metadata.agentbeats_ids.skillsbench_green = $green_agent_id else . end |
              if $purple_agent_id != "" then

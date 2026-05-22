@@ -18,8 +18,14 @@ Current public assets:
   smoke task environment. Public self-runs use the digest-pinned GHCR image from
   this build context because the Amber Docker gateway runs BenchFlow against
   existing images, not task-environment Docker builds.
-- `.github/workflows/publish-task-env.yml`: branch-only GHCR publisher for the
-  `citation-check` task environment. It uses the repository `GITHUB_TOKEN` with
+- `prebuilt_images/*.json`: digest-pinned task-id to image maps used by the
+  self-run workflow when `task_set` is selected. `smoke` is complete;
+  `standard-v1` must be generated as task images are published.
+- `.github/workflows/publish-task-env.yml`: manual GHCR publisher for task
+  environment images. It builds from the original SkillsBench
+  `tasks/<task-id>/environment` directory, writes a merged
+  `prebuilt_images/<task_set>.json` artifact, and can optionally commit that map
+  back to the branch. It uses the repository `GITHUB_TOKEN` with
   `packages: write`; no personal token should be checked in or printed.
 - `.github/workflows/quick-submit.yml`: preserved at the upstream path required
   by AgentBeats Quick Submit. It calls the repo-local runner so Quick Submit
@@ -136,11 +142,18 @@ until public registration is complete.
 
 The manual workflow can also set `task_set` to a checked-in manifest such as
 `smoke` or `standard-v1`. When a task set is selected, the workflow patches
-`assessment_config.task_ids` from `task_sets/<task_set>.json` and preflights
-that `skillsbench_worker.config.prebuilt_images` covers every selected task
-before Amber starts. The current branch only covers `citation-check`; a full
+`assessment_config.task_ids` from `task_sets/<task_set>.json`, loads
+`prebuilt_images/<task_set>.json` when present, and preflights that
+`skillsbench_worker.config.prebuilt_images` covers every selected task before
+Amber starts. The current branch only covers `citation-check`; a full
 `standard-v1` run requires publishing digest-pinned task environment images for
 the remaining tasks first.
+
+To publish task images, run `Publish Task Environment Images` manually. Use
+`task_set=standard-v1` and a comma-separated `task_ids` slice for controlled
+batches, or leave `task_ids` empty to build the full task set. The default
+`image_repository` is `ghcr.io/yiminnn/skillsbench-task-env`; make that GHCR
+package public before using its digests for public AgentBeats scoring.
 
 For a public-readiness self-run with durable worker proof, also set
 `require_durable_private_proof=true`, `private_proof_uri_prefix` to a durable

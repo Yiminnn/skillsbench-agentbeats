@@ -1,24 +1,128 @@
 name: Publish Task Environment Images
 
 on:
-  push:
-    branches:
-      - codex/agentbeats-skillsbench-leaderboard
-    paths:
-      - '.github/workflows/publish-task-env.yml'
-      - 'prebuilt/citation-check-environment/**'
   workflow_dispatch:
+    inputs:
+      task_set:
+        description: "Task-set manifest name under task_sets/"
+        default: "smoke"
+        type: string
+      task_ids:
+        description: "Optional comma-separated task ids from the task set; empty builds all"
+        default: ""
+        type: string
+      skillsbench_repository:
+        description: "Repository containing original SkillsBench tasks"
+        default: "benchflow-ai/skillsbench"
+        type: string
+      skillsbench_ref:
+        description: "SkillsBench git ref to build task environments from"
+        default: "codex/agentbeats-green-agent-runtime"
+        type: string
+      image_repository:
+        description: "GHCR image repository for task environment tags"
+        default: "ghcr.io/yiminnn/skillsbench-task-env"
+        type: string
+      commit_manifest:
+        description: "Commit merged prebuilt_images/<task_set>.json back to this branch"
+        default: false
+        type: boolean
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
+env:
+  IMAGE_REPOSITORY: ${{ inputs.image_repository || 'ghcr.io/yiminnn/skillsbench-task-env' }}
+  SKILLSBENCH_REPOSITORY: ${{ inputs.skillsbench_repository || 'benchflow-ai/skillsbench' }}
+  SKILLSBENCH_REF: ${{ inputs.skillsbench_ref || 'codex/agentbeats-green-agent-runtime' }}
+
 jobs:
-  publish:
+  prepare:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      task_set: ${{ steps.matrix.outputs.task_set }}
     steps:
-      - name: Checkout
+      - name: Checkout leaderboard
         uses: actions/checkout@v6
+
+      - name: Build task matrix
+        id: matrix
+        env:
+          TASK_SET: ${{ inputs.task_set || 'smoke' }}
+          TASK_IDS: ${{ inputs.task_ids || '' }}
+        run: |
+          set -euo pipefail
+          task_set_re='^[A-Za-z0-9_.-]+$'
+          if [[ ! "${TASK_SET}" =~ ${task_set_re} ]]; then
+            echo "task_set must be a direct task_sets/*.json manifest name" >&2
+            exit 1
+          fi
+          manifest="task_sets/${TASK_SET}.json"
+          if [[ ! -f "${manifest}" ]]; then
+            echo "task-set manifest not found: ${manifest}" >&2
+            exit 1
+          fi
+          if [[ -n "${TASK_IDS}" ]]; then
+            selected="$(printf '%s' "${TASK_IDS}" | jq -R -c 'split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))')"
+          else
+            selected='[]'
+          fi
+          tasks="$(jq -c --argjson selected "${selected}" '
+            [
+              .tasks[]
+              | select(($selected | length) == 0 or ((.task_id as $id | $selected | index($id)) != null))
+              | {
+                  task_id,
+                  task_digest,
+                  tag_suffix: (.task_id + "-" + (.task_digest | sub("^sha256:"; "") | .[0:12]))
+                }
+            ]
+          ' "${manifest}")"
+          if [[ "$(jq 'length' <<<"${tasks}")" -eq 0 ]]; then
+            echo "no tasks selected from ${manifest}" >&2
+            exit 1
+          fi
+          missing="$(jq -r --argjson selected "${selected}" --argjson tasks "${tasks}" '
+            if ($selected | length) == 0 then empty
+            else
+              ($tasks | map(.task_id)) as $found |
+              [$selected[] as $id | select(($found | index($id)) == null) | $id] | @tsv
+            end
+          ' "${manifest}")"
+          if [[ -n "${missing}" ]]; then
+            echo "selected task ids not present in ${manifest}: ${missing}" >&2
+            exit 1
+          fi
+          matrix="$(jq -cn --argjson tasks "${tasks}" '{include: $tasks}')"
+          echo "matrix=${matrix}" >> "${GITHUB_OUTPUT}"
+          echo "task_set=${TASK_SET}" >> "${GITHUB_OUTPUT}"
+          echo "Selected $(jq '.include | length' <<<"${matrix}") task image(s)."
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    steps:
+      - name: Checkout leaderboard
+        uses: actions/checkout@v6
+
+      - name: Checkout SkillsBench source
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.SKILLSBENCH_REPOSITORY }}
+          ref: ${{ env.SKILLSBENCH_REF }}
+          path: skillsbench-src
+
+      - name: Validate task environment context
+        run: |
+          set -euo pipefail
+          test -f "skillsbench-src/tasks/${{ matrix.task_id }}/environment/Dockerfile"
 
       - name: Log in to GHCR
         uses: docker/login-action@v3
@@ -30,13 +134,91 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push citation-check task environment
+      - name: Build and push task environment
+        id: build
         uses: docker/build-push-action@v6
         with:
-          context: prebuilt/citation-check-environment
+          context: skillsbench-src/tasks/${{ matrix.task_id }}/environment
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/yiminnn/skillsbench-citation-check-env:agentbeats-smoke
+          tags: |
+            ${{ env.IMAGE_REPOSITORY }}:${{ matrix.tag_suffix }}
+            ${{ env.IMAGE_REPOSITORY }}:${{ matrix.task_id }}
           labels: |
-            org.opencontainers.image.source=https://github.com/Yiminnn/skillsbench-agentbeats
-            org.opencontainers.image.description=SkillsBench citation-check AgentBeats smoke task environment
+            org.opencontainers.image.source=https://github.com/${{ env.SKILLSBENCH_REPOSITORY }}
+            org.opencontainers.image.revision=${{ env.SKILLSBENCH_REF }}
+            org.opencontainers.image.description=SkillsBench ${{ matrix.task_id }} AgentBeats task environment
+            org.skillsbench.task_id=${{ matrix.task_id }}
+            org.skillsbench.task_digest=${{ matrix.task_digest }}
+
+      - name: Record digest-pinned image ref
+        run: |
+          set -euo pipefail
+          mkdir -p image-map
+          jq -n \
+            --arg task_id "${{ matrix.task_id }}" \
+            --arg task_digest "${{ matrix.task_digest }}" \
+            --arg image "${IMAGE_REPOSITORY}@${{ steps.build.outputs.digest }}" \
+            '{task_id: $task_id, task_digest: $task_digest, image: $image}' \
+            > "image-map/${{ matrix.task_id }}.json"
+
+      - name: Upload image map fragment
+        uses: actions/upload-artifact@v7
+        with:
+          name: task-env-${{ matrix.task_id }}
+          path: image-map/${{ matrix.task_id }}.json
+
+  collect:
+    needs: [prepare, build]
+    runs-on: ubuntu-latest
+    if: ${{ success() }}
+    steps:
+      - name: Checkout leaderboard
+        uses: actions/checkout@v6
+
+      - name: Download image map fragments
+        uses: actions/download-artifact@v8
+        with:
+          path: image-artifacts
+          pattern: task-env-*
+          merge-multiple: true
+
+      - name: Merge prebuilt image map
+        env:
+          TASK_SET: ${{ needs.prepare.outputs.task_set }}
+        run: |
+          set -euo pipefail
+          mkdir -p prebuilt_images
+          target="prebuilt_images/${TASK_SET}.json"
+          if [[ -f "${target}" ]]; then
+            cp "${target}" existing.json
+          else
+            printf '{}\n' > existing.json
+          fi
+          jq -s 'map({(.task_id): .image}) | add // {}' image-artifacts/*.json > built.json
+          jq -S -s '.[0] * .[1]' existing.json built.json > "${target}"
+          echo "Updated ${target}:"
+          cat "${target}"
+
+      - name: Upload merged prebuilt image map
+        uses: actions/upload-artifact@v7
+        with:
+          name: prebuilt-images-${{ needs.prepare.outputs.task_set }}
+          path: prebuilt_images/${{ needs.prepare.outputs.task_set }}.json
+
+      - name: Commit prebuilt image map
+        if: ${{ inputs.commit_manifest }}
+        env:
+          TASK_SET: ${{ needs.prepare.outputs.task_set }}
+        run: |
+          set -euo pipefail
+          target="prebuilt_images/${TASK_SET}.json"
+          if git diff --quiet -- "${target}"; then
+            echo "No prebuilt image map changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${target}"
+          git commit -m "Update ${TASK_SET} prebuilt task images"
+          git push
