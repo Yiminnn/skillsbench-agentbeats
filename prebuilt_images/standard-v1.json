@@ -52,5 +52,9 @@
   "pddl-tpp-planning": "ghcr.io/yiminnn/skillsbench-task-env@sha256:51ef97b3c5a2c5b7118302abac4f2a6afa127803f34f3d13ca3ad7777fde364f",
   "pdf-excel-diff": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f831f32e1cc803562a706f645abec0729ddbe9664538308eba04a637e2f95ace",
   "powerlifting-coef-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c2566e89561d86afdaa524798249dee56a0626a9608c9a6dc4e6c626ee6f7954",
-  "pptx-reference-formatting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b1e0b9b7627a01e22696abb008ebc5e85f56661456278948d3315da4a2e5e8f6"
+  "pptx-reference-formatting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b1e0b9b7627a01e22696abb008ebc5e85f56661456278948d3315da4a2e5e8f6",
+  "protein-expression-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:37a06a9a9773f3989288d8e3ce4d503940262d9bd7942f7f9e87677a707606cd",
+  "r2r-mpc-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:54d24ec44e6c86200cd75d794fd179bbc873f253dbd7e6b5a273f99732fda730",
+  "reserves-at-risk-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:d0d1a72e94d56e07f6cf1293e7188809c78ed093288555a362d658721b4912e8",
+  "sales-pivot-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8331e83e80fee2f41dcc623061f6c155ec46ccd0af98d09606430cb5fb5bb093"
 }
