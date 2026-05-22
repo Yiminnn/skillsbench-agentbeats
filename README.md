@@ -22,7 +22,8 @@ Current public assets:
   `citation-check` task environment. It uses the repository `GITHUB_TOKEN` with
   `packages: write`; no personal token should be checked in or printed.
 - `.github/workflows/quick-submit.yml`: preserved at the upstream path required
-  by AgentBeats Quick Submit.
+  by AgentBeats Quick Submit. It calls the repo-local runner so Quick Submit
+  submissions use the same flattened SkillsBench row contract as self-runs.
 
 Before public scoring, fill the real AgentBeats registration IDs in
 `scenario.json5` metadata and add `assessment_config.participant_ids.agent` with
