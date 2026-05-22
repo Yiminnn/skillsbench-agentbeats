@@ -1,3 +1,4 @@
 {
+  "3d-scan-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:68d72a43086011a1df56833eb4d6f606594e3bafd08ed4b9524372df90a8f371",
   "citation-check": "ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:8ba4740e9edfe7bb0d071c6e64f788e5652a47fc24fc0e7c74bdb2f896877233"
 }
