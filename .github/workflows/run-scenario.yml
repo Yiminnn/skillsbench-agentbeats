@@ -286,14 +286,19 @@ jobs:
             fi
             shard_results+=("$f")
           done
-          # Extract participants (agentbeats IDs) from scenario
-          participants=$(npx json5 scenario.json5 | jq '.metadata.agentbeats_ids // {}')
+          # Extract the registered purple AgentBeats ID from scenario metadata.
+          participants=$(npx json5 scenario.json5 | jq -c '{agent: (.metadata.agentbeats_ids.baseline_agent // .metadata.agentbeats_ids.agent // "")}')
           jq -s --argjson participants "$participants" '{
             status: (if all(.[]; .status == "completed") then "completed"
                     elif any(.[]; .status == "completed") then "partial"
                     else "failed" end),
             participants: $participants,
-            results: [.[].results[]]
+            results: [
+              .[]
+              | .results[]
+              | if type == "object" and (.results | type == "array") then .results[] else . end
+              | select(type == "object")
+            ]
           }' "${shard_results[@]}" > results.json
 
       - name: Validate and merge provenance
