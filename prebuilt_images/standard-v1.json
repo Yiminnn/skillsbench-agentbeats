@@ -32,5 +32,9 @@
   "grid-dispatch-operator": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b82c9270b5e9a37de2586fd694aa12fbc62448289da7ba321e50337039ae98a5",
   "hvac-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:28a54dd13b4fc415114c6ae54e7ed9e5d260fb3ee0e4e6895ddee84cbb6a9431",
   "invoice-fraud-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0739fb79fe49378e62d62bdea7f6af9398cb36edcdc3580dceb23d8ec6db9ea2",
-  "jax-computing-basics": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c5c2c1f482b7c4029ba7b08164402b2f27115afa4cceaef7f4248da44449018b"
+  "jax-computing-basics": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c5c2c1f482b7c4029ba7b08164402b2f27115afa4cceaef7f4248da44449018b",
+  "jpg-ocr-stat": "ghcr.io/yiminnn/skillsbench-task-env@sha256:02547f946ae85714e9dd126cd9d88e0a91e6611fb3dd3765a08db40f7c2e8117",
+  "lab-unit-harmonization": "ghcr.io/yiminnn/skillsbench-task-env@sha256:ce0dfbe36a598559e5a1632aff3398389da812a6b5a8bf5597fe06edd16c38c2",
+  "lake-warming-attribution": "ghcr.io/yiminnn/skillsbench-task-env@sha256:ddc05c2b265df3e2e1779cdc96307b26bc74c28e2b04296ceed092a3f9c75d17",
+  "latex-formula-extraction": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0ee0af524ddbd896aa922a241585b2fc632bce507afb7e37ff50288aaabc9482"
 }
