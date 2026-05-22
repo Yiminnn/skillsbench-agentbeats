@@ -4,5 +4,9 @@
   "adaptive-cruise-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:3474895360003b0a6e79d35da0fd6cc5c729ecb6ba94e6edf7bfd741490a48b5",
   "azure-bgp-oscillation-route-leak": "ghcr.io/yiminnn/skillsbench-task-env@sha256:45cf8ab6594bd2e1073959fc3a48e4f1e71f21ac7dce1d0c7884380657aed9a6",
   "bike-rebalance": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9fd1ada3d689090e01de21a9189e51bb93d1613bdef375d425b8b83841975375",
-  "citation-check": "ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:8ba4740e9edfe7bb0d071c6e64f788e5652a47fc24fc0e7c74bdb2f896877233"
+  "citation-check": "ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:8ba4740e9edfe7bb0d071c6e64f788e5652a47fc24fc0e7c74bdb2f896877233",
+  "civ6-adjacency-optimizer": "ghcr.io/yiminnn/skillsbench-task-env@sha256:2a83545bf73a0dbd2b131c45a9d9ded1b655107840894084b86238c065f78ab9",
+  "court-form-filling": "ghcr.io/yiminnn/skillsbench-task-env@sha256:37bdea4e2b901e0a11724a1a6f79b12921349185e490976d7891d7a1cd08a5e8",
+  "crystallographic-wyckoff-position-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a033bc436debc8ab941902912dbee66bc9ced6f41eb8eb93524a23cb8618dccd",
+  "dapt-intrusion-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:cbbcb382e95ef763fe2860cf3e4101fcaa6f0fe8165baaa11b44301e28438326"
 }
