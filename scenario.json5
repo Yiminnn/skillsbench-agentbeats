@@ -36,11 +36,11 @@
     skillsbench_worker: {
       manifest: "./worker.json5",
       config: {
-        worker_revision: "sha256:541d1ce567dc84d0a33f97c362badc5276be952e374b8658d1d7eb46a674bb7a",
-        skillsbench_revision: "e171f10c",
+        worker_revision: "sha256:21d157ffd06f06ff38bcd5e56a15d92d958ad88ff7f1db9db1afc5ae90eb0b9a",
+        skillsbench_revision: "2812555b",
         benchflow_revision: "7f295084da2b7ccc7c9345ee2a64927cc8f36433",
-        worker_image: "ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:541d1ce567dc84d0a33f97c362badc5276be952e374b8658d1d7eb46a674bb7a",
-        worker_image_digest: "sha256:541d1ce567dc84d0a33f97c362badc5276be952e374b8658d1d7eb46a674bb7a",
+        worker_image: "ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:21d157ffd06f06ff38bcd5e56a15d92d958ad88ff7f1db9db1afc5ae90eb0b9a",
+        worker_image_digest: "sha256:21d157ffd06f06ff38bcd5e56a15d92d958ad88ff7f1db9db1afc5ae90eb0b9a",
         prebuilt_images: "{\"citation-check\":\"ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:ab820ad2058610a955264b26247f4a78f59c52fac81f25b42e3616ac8e29fff4\"}",
         private_proof_dir: "jobs/agentbeats-private-proof",
         private_proof_uri_prefix: "local://agentbeats-private-proof",
