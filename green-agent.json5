@@ -18,7 +18,7 @@
   },
 
   program: {
-    image: "ghcr.io/yiminnn/skillsbench-agentbeats-green@sha256:2f2928036f5d3f0d35648691abff16e12f10d8ba49fc4c81cb2dc76930e795c4",
+    image: "ghcr.io/yiminnn/skillsbench-agentbeats-green@sha256:71c4da3203adbcf117dd9c5c7f11ac59a7f58075ff7f90940e5b3c6d91396fc8",
     entrypoint: "uv run --no-sync python -m skillsbench_agentbeats.server --host 0.0.0.0 --port 9009",
     env: {
       SKILLSBENCH_AGENTBEATS_PROXY_URL: "${slots.proxy.url}",
