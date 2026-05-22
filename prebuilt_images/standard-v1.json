@@ -40,5 +40,9 @@
   "lean4-proof": "ghcr.io/yiminnn/skillsbench-task-env@sha256:2e82e6d054f1a52472c227eadceb0180680e02093fb34b86b24bba8e73b2c1d4",
   "llm-prefix-cache-replay": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c63e12d81f8af357f519d11be7f5fb33380feaf9d14d34aecdfcf28e19516b78",
   "manufacturing-codebook-normalization": "ghcr.io/yiminnn/skillsbench-task-env@sha256:507693d8a3c3d386427202d60548006d82d40af55be4f7c30bdd3cb4c2292996",
-  "manufacturing-equipment-maintenance": "ghcr.io/yiminnn/skillsbench-task-env@sha256:3583240f67b75fb2699293aa80223ffeefbe5307bfed974284bdde9a41456c7a"
+  "manufacturing-equipment-maintenance": "ghcr.io/yiminnn/skillsbench-task-env@sha256:3583240f67b75fb2699293aa80223ffeefbe5307bfed974284bdde9a41456c7a",
+  "manufacturing-fjsp-optimization": "ghcr.io/yiminnn/skillsbench-task-env@sha256:767f167689355b88274bc420af722daa7fc7404a8113aa68add56b2c35ea1199",
+  "mario-coin-counting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:563372a42bc837843ab66931348e619c8728a4816546262338d0f6bbe0085faa",
+  "mars-clouds-clustering": "ghcr.io/yiminnn/skillsbench-task-env@sha256:33b0d02cab51c9afa5a5c9c29ff8bbd092e69273ce5ed1bfa1d9ceb92dda527c",
+  "offer-letter-generator": "ghcr.io/yiminnn/skillsbench-task-env@sha256:92a50feb1057ca03680a1fca2c3631651911cf58f735584a7d18c797056ea5b4"
 }
