@@ -44,5 +44,9 @@
   "manufacturing-fjsp-optimization": "ghcr.io/yiminnn/skillsbench-task-env@sha256:767f167689355b88274bc420af722daa7fc7404a8113aa68add56b2c35ea1199",
   "mario-coin-counting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:563372a42bc837843ab66931348e619c8728a4816546262338d0f6bbe0085faa",
   "mars-clouds-clustering": "ghcr.io/yiminnn/skillsbench-task-env@sha256:33b0d02cab51c9afa5a5c9c29ff8bbd092e69273ce5ed1bfa1d9ceb92dda527c",
-  "offer-letter-generator": "ghcr.io/yiminnn/skillsbench-task-env@sha256:92a50feb1057ca03680a1fca2c3631651911cf58f735584a7d18c797056ea5b4"
+  "offer-letter-generator": "ghcr.io/yiminnn/skillsbench-task-env@sha256:92a50feb1057ca03680a1fca2c3631651911cf58f735584a7d18c797056ea5b4",
+  "paper-anonymizer": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f7291884032d4070f5a8b37dcaa734b6848261cf7372f79e88c50afc8a3b1859",
+  "parallel-tfidf-search": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9710026960f9f5886c15e9e6f9f17ca244d82e296ada016e9e8f0aea04cd8302",
+  "paratransit-routing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:87391430adef82e368a56a5cc95ec2c4b2c45ba2c6b097782affee2bc7731ac1",
+  "pddl-airport-planning": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9ff2118f587eab73df82c2ede3073894ceb360d4dd75f05e61467c6d3d53c014"
 }
