@@ -1,3 +1,33 @@
+# SkillsBench AgentBeats Leaderboard
+
+This branch adapts the AgentBeats leaderboard template for the SkillsBench green
+agent without changing the original SkillsBench task format.
+
+Current public assets:
+
+- `scenario.json5`: worker-backed smoke scenario for `citation-check`.
+- `green-agent.json5`, `worker.json5`, `participant-placeholder.json5`:
+  component manifests pinned to public `ghcr.io/yiminnn/...@sha256:...` images.
+- `queries/*.sql`: DuckDB leaderboard queries. The first column is the
+  registered purple AgentBeats UUID.
+- `task_sets/*.json`: public task-set manifests. `tasks/` is the runnable public
+  source; `tasks_excluded/` stays excluded by default.
+- `fixtures/results/*.json`: local query fixtures only. These are not public
+  leaderboard rows and are intentionally outside `results/`.
+- `.github/workflows/quick-submit.yml`: preserved at the upstream path required
+  by AgentBeats Quick Submit.
+
+Before public scoring, fill the real AgentBeats registration IDs in
+`scenario.json5` metadata and add `assessment_config.participant_ids.agent` with
+the registered purple-agent UUID. Do not use fixture UUIDs for public runs. The
+current worker proof URI is local debug evidence only; public readiness still
+requires durable private proof storage and recorded retention.
+
+A2A remains the AgentBeats participant protocol boundary. ACP remains
+BenchFlow's coding-agent transport.
+
+---
+
 # Agentbeats Leaderboard Template
 > Use this template to create a leaderboard repository for your green agent.
 
