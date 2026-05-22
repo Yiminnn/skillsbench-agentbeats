@@ -64,12 +64,12 @@ Current pinned runtime images:
 Registered self-run evidence:
 
 - workflow run:
-  `https://github.com/Yiminnn/skillsbench-agentbeats/actions/runs/26297348925`
-- submission branch: `submission-Yiminnn-20260522-155005`
-- result file: `results/Yiminnn-20260522-155005.json`
-- provenance file: `submissions/Yiminnn-20260522-155005-provenance.json`
+  `https://github.com/Yiminnn/skillsbench-agentbeats/actions/runs/26302400601`
+- submission branch: `submission-Yiminnn-20260522-173608`
+- result file: `results/Yiminnn-20260522-173608.json`
+- provenance file: `submissions/Yiminnn-20260522-173608-provenance.json`
 - workflow commit:
-  `637c149f13df56b5cc14828eee13adee9cde1e6b`
+  `d662ce060b8f94ba71cb4faaa0796681157f2e75`
 - result shape: five flattened public rows for `deploy-smoke-v1`, all
   `score_eligible: true`, `infra_failure_type: null`, and
   `agent_transport: "a2a"`
