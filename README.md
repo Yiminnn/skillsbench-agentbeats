@@ -18,6 +18,9 @@ Current public assets:
   smoke task environment. The self-run workflow builds this local image before
   Amber starts because the Amber Docker gateway runs BenchFlow against existing
   images, not task-environment Docker builds.
+- `.github/workflows/publish-task-env.yml`: branch-only GHCR publisher for the
+  `citation-check` task environment. It uses the repository `GITHUB_TOKEN` with
+  `packages: write`; no personal token should be checked in or printed.
 - `.github/workflows/quick-submit.yml`: preserved at the upstream path required
   by AgentBeats Quick Submit.
 
