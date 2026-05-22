@@ -15,9 +15,9 @@ Current public assets:
 - `fixtures/results/*.json`: local query fixtures only. These are not public
   leaderboard rows and are intentionally outside `results/`.
 - `prebuilt/citation-check-environment/`: public Docker build context for the
-  smoke task environment. The self-run workflow builds this local image before
-  Amber starts because the Amber Docker gateway runs BenchFlow against existing
-  images, not task-environment Docker builds.
+  smoke task environment. Public self-runs use the digest-pinned GHCR image from
+  this build context because the Amber Docker gateway runs BenchFlow against
+  existing images, not task-environment Docker builds.
 - `.github/workflows/publish-task-env.yml`: branch-only GHCR publisher for the
   `citation-check` task environment. It uses the repository `GITHUB_TOKEN` with
   `packages: write`; no personal token should be checked in or printed.
@@ -27,9 +27,8 @@ Current public assets:
 Before public scoring, fill the real AgentBeats registration IDs in
 `scenario.json5` metadata and add `assessment_config.participant_ids.agent` with
 the registered purple-agent UUID. Do not use fixture UUIDs for public runs. The
-current worker proof URI and local prebuilt task image are debug evidence only;
-public readiness still requires durable private proof storage, a public
-digest-pinned task environment image, and recorded retention.
+current worker proof URI is debug evidence only; public readiness still requires
+durable private proof storage and recorded retention.
 
 A2A remains the AgentBeats participant protocol boundary. ACP remains
 BenchFlow's coding-agent transport.

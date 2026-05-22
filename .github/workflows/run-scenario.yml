@@ -95,14 +95,6 @@ jobs:
             ' > patched.json
           mv patched.json scenario.json5
 
-      - name: Build local SkillsBench task environment images
-        run: |
-          docker buildx build \
-            --platform linux/amd64 \
-            -t skillsbench-citation-check-env:agentbeats-smoke \
-            --load \
-            prebuilt/citation-check-environment
-
       - name: Install amber CLI
         shell: bash
         run: |
