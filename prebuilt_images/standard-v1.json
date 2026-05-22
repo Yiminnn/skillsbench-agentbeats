@@ -28,5 +28,9 @@
   "flood-risk-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f60fed5738fcc15bda14836de8674340146cd35fad293c5cf6524baeeb41513d",
   "gh-repo-analytics": "ghcr.io/yiminnn/skillsbench-task-env@sha256:d6ad0d6292a272cac7fd6e54c51446ff331e48026e93239cf3901dce67d77268",
   "glm-lake-mendota": "ghcr.io/yiminnn/skillsbench-task-env@sha256:3296acef9307af9d386a327d12c8a8a43c1cc118bf00acac71d49667c30638a9",
-  "gravitational-wave-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:e924a78d1b35895a5d2b2feeb15034c7f280ed9fe171663d93286e2f3d0fef15"
+  "gravitational-wave-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:e924a78d1b35895a5d2b2feeb15034c7f280ed9fe171663d93286e2f3d0fef15",
+  "grid-dispatch-operator": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b82c9270b5e9a37de2586fd694aa12fbc62448289da7ba321e50337039ae98a5",
+  "hvac-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:28a54dd13b4fc415114c6ae54e7ed9e5d260fb3ee0e4e6895ddee84cbb6a9431",
+  "invoice-fraud-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0739fb79fe49378e62d62bdea7f6af9398cb36edcdc3580dceb23d8ec6db9ea2",
+  "jax-computing-basics": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c5c2c1f482b7c4029ba7b08164402b2f27115afa4cceaef7f4248da44449018b"
 }
