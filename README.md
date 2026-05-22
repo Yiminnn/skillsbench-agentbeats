@@ -141,7 +141,8 @@ scenario copy used for that run; the checked-in branch keeps ID fields empty
 until public registration is complete.
 
 The manual workflow can also set `task_set` to a checked-in manifest such as
-`smoke` or `standard-v1`. When a task set is selected, the workflow patches
+`smoke`, `deploy-smoke-v1`, or `standard-v1`. Use `deploy-smoke-v1` for the
+current 5-task AgentBeats deployment gate. When a task set is selected, the workflow patches
 `assessment_config.task_ids` from `task_sets/<task_set>.json`, loads
 `prebuilt_images/<task_set>.json` when present, and preflights that
 `skillsbench_worker.config.prebuilt_images` covers every selected task before
