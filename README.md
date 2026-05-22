@@ -5,7 +5,12 @@ agent without changing the original SkillsBench task format.
 
 Current public assets:
 
-- `scenario.json5`: worker-backed smoke scenario for `citation-check`.
+- `scenario.json5`: worker-backed initial deployment scenario for the five-task
+  `deploy-smoke-v1` set. Local component manifests are referenced through
+  branch-hosted raw GitHub URLs so Quick Submit submissions under
+  `submissions/*.json` can resolve them from any directory:
+  `citation-check`, `court-form-filling`, `dialogue-parser`,
+  `offer-letter-generator`, and `powerlifting-coef-calc`.
 - `green-agent.json5`, `worker.json5`, `participant-placeholder.json5`:
   component manifests pinned to public `ghcr.io/yiminnn/...@sha256:...` images.
 - `queries/*.sql`: DuckDB leaderboard queries. The first column is the
@@ -14,13 +19,12 @@ Current public assets:
   source; `tasks_excluded/` stays excluded by default.
 - `fixtures/results/*.json`: local query fixtures only. These are not public
   leaderboard rows and are intentionally outside `results/`.
-- `prebuilt/citation-check-environment/`: public Docker build context for the
-  smoke task environment. Public self-runs use the digest-pinned GHCR image from
-  this build context because the Amber Docker gateway runs BenchFlow against
-  existing images, not task-environment Docker builds.
+- `prebuilt/citation-check-environment/`: retained public Docker build context
+  for the original one-task smoke image. The five-task deployment gate uses the
+  digest-pinned GHCR task images in `prebuilt_images/deploy-smoke-v1.json`.
 - `prebuilt_images/*.json`: digest-pinned task-id to image maps used by the
-  self-run workflow when `task_set` is selected. `smoke` and `standard-v1`
-  are complete for their checked-in task manifests.
+  self-run workflow and by the checked-in scenario. `deploy-smoke-v1` is the
+  current deployment gate; `standard-v1` is later broad-readiness work.
 - `.github/workflows/publish-task-env.yml`: manual GHCR publisher for task
   environment images. It builds from the original SkillsBench
   `tasks/<task-id>/environment` directory, writes a merged
@@ -31,14 +35,80 @@ Current public assets:
   by AgentBeats Quick Submit. It calls the repo-local runner so Quick Submit
   submissions use the same flattened SkillsBench row contract as self-runs.
 
-Before public scoring, fill the real AgentBeats registration IDs in
-`scenario.json5` metadata and add `assessment_config.participant_ids.agent` with
-the registered purple-agent UUID. Do not use fixture UUIDs for public runs. The
-current worker proof URI is debug evidence only; public readiness still requires
-durable private proof storage and recorded retention.
+The checked-in scenario deliberately keeps registration IDs empty so forks and
+Quick Submit branches can provide their own participant IDs. For the current
+registered self-run evidence, use the workflow inputs below. The current worker
+proof URI is debug evidence only; durable private proof storage is not required
+for the 5-task initial deployment gate but must be enabled before treating this
+as a broad public scoring launch.
 
 A2A remains the AgentBeats participant protocol boundary. ACP remains
 BenchFlow's coding-agent transport.
+
+## Deployment status
+
+This branch is the initial 5-task SkillsBench AgentBeats deployment candidate.
+It follows the same deployment posture as Terminal-Bench's AgentBeats
+leaderboard: an Amber scenario, GitHub Actions self-run, Quick Submit workflow
+path, committed result/provenance artifacts, and DuckDB leaderboard queries.
+
+Current pinned runtime images:
+
+- green:
+  `ghcr.io/yiminnn/skillsbench-agentbeats-green@sha256:6148aab94ee1868157429815e6ceb718f445dce047e07d5081c50f9c75ffe803`
+- worker:
+  `ghcr.io/yiminnn/skillsbench-agentbeats-worker@sha256:21d157ffd06f06ff38bcd5e56a15d92d958ad88ff7f1db9db1afc5ae90eb0b9a`
+- gateway, baseline participant, and task-environment image digests are recorded
+  in each submitted provenance file.
+
+Registered self-run evidence:
+
+- workflow run:
+  `https://github.com/Yiminnn/skillsbench-agentbeats/actions/runs/26297348925`
+- submission branch: `submission-Yiminnn-20260522-155005`
+- result file: `results/Yiminnn-20260522-155005.json`
+- provenance file: `submissions/Yiminnn-20260522-155005-provenance.json`
+- workflow commit:
+  `637c149f13df56b5cc14828eee13adee9cde1e6b`
+- result shape: five flattened public rows for `deploy-smoke-v1`, all
+  `score_eligible: true`, `infra_failure_type: null`, and
+  `agent_transport: "a2a"`
+
+To reproduce the registered self-run from this branch:
+
+```bash
+gh workflow run run-scenario.yml \
+  --repo Yiminnn/skillsbench-agentbeats \
+  --ref codex/agentbeats-skillsbench-leaderboard \
+  -f num_shards=1 \
+  -f green_agent_id=019e4ecb-4b5b-7481-b6f4-85ad93336437 \
+  -f purple_agent_id=019e4ed1-d333-7133-807f-5f22c04d5eef \
+  -f require_durable_private_proof=false
+```
+
+Do not pass `task_set` for the deployment smoke: the checked-in scenario already
+defaults to `deploy-smoke-v1`.
+
+Quick Submit compatibility:
+
+- `.github/workflows/quick-submit.yml` is present at the AgentBeats-required
+  path and accepts `quick-submit-*` pull requests to `main`.
+- It calls the repo-local `.github/workflows/quick-submit-runner.yml`, which is
+  based on the AgentBeats template runner but preserves SkillsBench's flattened
+  public row contract and prebuilt task-image requirements.
+- Quick Submit submissions must contain a strict JSON scenario file under
+  `submissions/<submission-id>.json`; the runner resolves that file, patches
+  sharding, compiles it with Amber, writes `results/<submission-id>.json`, and
+  commits provenance back to the submit branch. The checked-in scenario uses
+  branch-hosted manifest URLs rather than `./green-agent.json5`-style local
+  paths so the same scenario can compile after AgentBeats copies it under
+  `submissions/`.
+- Live Quick Submit is not executed from this branch because no AgentBeats
+  backend-created `quick-submit-<uuid>` PR/secrets bundle exists for this
+  temporary leaderboard repo. Once AgentBeats creates that PR, the remaining
+  external dependency is the AgentBeats backend OIDC secret endpoint
+  `/api/quick-submit/<uuid>/secrets`; without that backend record the runner
+  must fail before execution, by design.
 
 ---
 

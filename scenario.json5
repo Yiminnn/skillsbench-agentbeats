@@ -32,7 +32,7 @@
       },
     },
     skillsbench_green: {
-      manifest: "./green-agent.json5",
+      manifest: "https://raw.githubusercontent.com/Yiminnn/skillsbench-agentbeats/refs/heads/codex/agentbeats-skillsbench-leaderboard/green-agent.json5",
       config: {
         worker_url: "",
         worker_timeout_sec: 3600,
@@ -40,7 +40,7 @@
       },
     },
     skillsbench_worker: {
-      manifest: "./worker.json5",
+      manifest: "https://raw.githubusercontent.com/Yiminnn/skillsbench-agentbeats/refs/heads/codex/agentbeats-skillsbench-leaderboard/worker.json5",
       config: {
         worker_revision: "sha256:21d157ffd06f06ff38bcd5e56a15d92d958ad88ff7f1db9db1afc5ae90eb0b9a",
         skillsbench_revision: "2812555b",
@@ -57,7 +57,7 @@
       },
     },
     baseline_agent: {
-      manifest: "./participant-placeholder.json5",
+      manifest: "https://raw.githubusercontent.com/Yiminnn/skillsbench-agentbeats/refs/heads/codex/agentbeats-skillsbench-leaderboard/participant-placeholder.json5",
       config: {},
     },
   },
