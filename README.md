@@ -19,9 +19,8 @@ Current public assets:
   this build context because the Amber Docker gateway runs BenchFlow against
   existing images, not task-environment Docker builds.
 - `prebuilt_images/*.json`: digest-pinned task-id to image maps used by the
-  self-run workflow when `task_set` is selected. `smoke` is complete;
-  `standard-v1` is seeded with `citation-check` and must be filled as the
-  remaining task images are published.
+  self-run workflow when `task_set` is selected. `smoke` and `standard-v1`
+  are complete for their checked-in task manifests.
 - `.github/workflows/publish-task-env.yml`: manual GHCR publisher for task
   environment images. It builds from the original SkillsBench
   `tasks/<task-id>/environment` directory, writes a merged
@@ -146,9 +145,8 @@ The manual workflow can also set `task_set` to a checked-in manifest such as
 `assessment_config.task_ids` from `task_sets/<task_set>.json`, loads
 `prebuilt_images/<task_set>.json` when present, and preflights that
 `skillsbench_worker.config.prebuilt_images` covers every selected task before
-Amber starts. The current branch only covers `citation-check`; a full
-`standard-v1` run requires publishing digest-pinned task environment images for
-the remaining tasks first.
+Amber starts. The checked-in `standard-v1` image map covers every selected
+public task, so the full run passes the public image-coverage preflight.
 
 To publish task images, run `Publish Task Environment Images` manually. Use
 `task_set=standard-v1` and a comma-separated `task_ids` slice for controlled
