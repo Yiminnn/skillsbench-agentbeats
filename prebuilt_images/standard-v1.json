@@ -48,5 +48,9 @@
   "paper-anonymizer": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f7291884032d4070f5a8b37dcaa734b6848261cf7372f79e88c50afc8a3b1859",
   "parallel-tfidf-search": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9710026960f9f5886c15e9e6f9f17ca244d82e296ada016e9e8f0aea04cd8302",
   "paratransit-routing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:87391430adef82e368a56a5cc95ec2c4b2c45ba2c6b097782affee2bc7731ac1",
-  "pddl-airport-planning": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9ff2118f587eab73df82c2ede3073894ceb360d4dd75f05e61467c6d3d53c014"
+  "pddl-airport-planning": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9ff2118f587eab73df82c2ede3073894ceb360d4dd75f05e61467c6d3d53c014",
+  "pddl-tpp-planning": "ghcr.io/yiminnn/skillsbench-task-env@sha256:51ef97b3c5a2c5b7118302abac4f2a6afa127803f34f3d13ca3ad7777fde364f",
+  "pdf-excel-diff": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f831f32e1cc803562a706f645abec0729ddbe9664538308eba04a637e2f95ace",
+  "powerlifting-coef-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c2566e89561d86afdaa524798249dee56a0626a9608c9a6dc4e6c626ee6f7954",
+  "pptx-reference-formatting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b1e0b9b7627a01e22696abb008ebc5e85f56661456278948d3315da4a2e5e8f6"
 }
