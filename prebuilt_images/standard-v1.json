@@ -9,8 +9,10 @@
   "court-form-filling": "ghcr.io/yiminnn/skillsbench-task-env@sha256:37bdea4e2b901e0a11724a1a6f79b12921349185e490976d7891d7a1cd08a5e8",
   "crystallographic-wyckoff-position-analysis": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a033bc436debc8ab941902912dbee66bc9ced6f41eb8eb93524a23cb8618dccd",
   "dapt-intrusion-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:cbbcb382e95ef763fe2860cf3e4101fcaa6f0fe8165baaa11b44301e28438326",
+  "data-to-d3": "ghcr.io/yiminnn/skillsbench-task-env@sha256:76851ff97cb79854c1b078b1b5fd395d92b738e37e63e4e800a5dda7032b7b44",
   "dialogue-parser": "ghcr.io/yiminnn/skillsbench-task-env@sha256:c7885a97b18332bb9a5853ab26851a5f0fbeca7d04ef8c1c757ad610f13478e6",
   "drone-planning-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:4c57b9f73b562e8e918088bf71ba6355b02344f3ead09a0596a466a696075ba2",
+  "dynamic-object-aware-egomotion": "ghcr.io/yiminnn/skillsbench-task-env@sha256:db25e78d4d0420199a9bbe11498cff736fc7cd2e0b23d6fb1b6fd1f1f2eddb7d",
   "earthquake-plate-calculation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:6d299fcc079625386155b910988d7032f22550f9968470dc0a8dc4f015fb83a4",
   "econ-detrending-correlation": "ghcr.io/yiminnn/skillsbench-task-env@sha256:df74fdd1be6802fdb5027602897c10a6dfd20f8ecf02dfdbc1915653a397fd11",
   "edit-pdf": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f605e300708448f398bcb70c62279895c090504319700d1d78764528625b5639",
@@ -45,6 +47,7 @@
   "mario-coin-counting": "ghcr.io/yiminnn/skillsbench-task-env@sha256:563372a42bc837843ab66931348e619c8728a4816546262338d0f6bbe0085faa",
   "mars-clouds-clustering": "ghcr.io/yiminnn/skillsbench-task-env@sha256:33b0d02cab51c9afa5a5c9c29ff8bbd092e69273ce5ed1bfa1d9ceb92dda527c",
   "offer-letter-generator": "ghcr.io/yiminnn/skillsbench-task-env@sha256:92a50feb1057ca03680a1fca2c3631651911cf58f735584a7d18c797056ea5b4",
+  "organize-messy-files": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a8bcaa03a5035acdb87ab1415d3b87f4122d4d15f30bb5306d4c509dbc3826a5",
   "paper-anonymizer": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f7291884032d4070f5a8b37dcaa734b6848261cf7372f79e88c50afc8a3b1859",
   "parallel-tfidf-search": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9710026960f9f5886c15e9e6f9f17ca244d82e296ada016e9e8f0aea04cd8302",
   "paratransit-routing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:87391430adef82e368a56a5cc95ec2c4b2c45ba2c6b097782affee2bc7731ac1",
@@ -71,6 +74,7 @@
   "threejs-to-obj": "ghcr.io/yiminnn/skillsbench-task-env@sha256:6e60400727304d048e2cf22c298f9eabbf762256a34a99368915d056d420d327",
   "tictoc-unnecessary-abort-detection": "ghcr.io/yiminnn/skillsbench-task-env@sha256:0bdd6330ecf84afbd885c96b0b22c6738265312df0799e58012e4da25038c588",
   "travel-planning": "ghcr.io/yiminnn/skillsbench-task-env@sha256:28b6e6494519ed5a6d043820af91799a424788e9ea682443a7ce733791b8a448",
+  "video-silence-remover": "ghcr.io/yiminnn/skillsbench-task-env@sha256:843855a0908fa08bb63c547394bd97c2ae40d2c04ae73a5e6f9755a57ae474c0",
   "weighted-gdp-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:38775a37bd0db7581a2bb57345cd7a8ae5c8ff2eeabf4f1e06cb80f933a31008",
   "xlsx-recover-data": "ghcr.io/yiminnn/skillsbench-task-env@sha256:b812f9d52b43faa70d6f5489d22a7c95e6ce8a5e846a9b471bf489080fc08752"
 }
