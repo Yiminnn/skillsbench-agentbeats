@@ -16,5 +16,9 @@
   "edit-pdf": "ghcr.io/yiminnn/skillsbench-task-env@sha256:f605e300708448f398bcb70c62279895c090504319700d1d78764528625b5639",
   "energy-ac-optimal-power-flow": "ghcr.io/yiminnn/skillsbench-task-env@sha256:cd48e4f117f5d93f3e3a1f292b7aaa59e68ac73be5f6bba117b71c9f6267535d",
   "energy-market-pricing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:28f3dde522912258eaa45e040ec2b67b8d4ee524be3170c6729d8f95b467b735",
-  "energy-unit-commitment": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a485ea5a0eb1531e905088bf0ec889778287ebb44ef81db8320c598939187643"
+  "energy-unit-commitment": "ghcr.io/yiminnn/skillsbench-task-env@sha256:a485ea5a0eb1531e905088bf0ec889778287ebb44ef81db8320c598939187643",
+  "enterprise-information-search": "ghcr.io/yiminnn/skillsbench-task-env@sha256:13225f451ec10e6366a68bb769fb21c1e2d6ce3058feb859ab2f4f4fd61e73a3",
+  "exam-block-sequencing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:607259b2098062b471f7b83ef3066500f55bf10f226fb795823e477af8207b92",
+  "exceltable-in-ppt": "ghcr.io/yiminnn/skillsbench-task-env@sha256:944f51bd1e2416262007e1a558a92650c2232176af06363cc6011ea94dad8526",
+  "exoplanet-detection-period": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8b2236ce91f0596922320b6b8284365ec2cdf7da868f8471f2bec347e615ff25"
 }
