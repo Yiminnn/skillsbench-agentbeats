@@ -1,4 +1,8 @@
 {
   "3d-scan-calc": "ghcr.io/yiminnn/skillsbench-task-env@sha256:68d72a43086011a1df56833eb4d6f606594e3bafd08ed4b9524372df90a8f371",
+  "ada-bathroom-plan-repair": "ghcr.io/yiminnn/skillsbench-task-env@sha256:ab31859533b820a0f403d0877c7daabb1f0bb5991f73a409ceac9221763dd6f1",
+  "adaptive-cruise-control": "ghcr.io/yiminnn/skillsbench-task-env@sha256:3474895360003b0a6e79d35da0fd6cc5c729ecb6ba94e6edf7bfd741490a48b5",
+  "azure-bgp-oscillation-route-leak": "ghcr.io/yiminnn/skillsbench-task-env@sha256:45cf8ab6594bd2e1073959fc3a48e4f1e71f21ac7dce1d0c7884380657aed9a6",
+  "bike-rebalance": "ghcr.io/yiminnn/skillsbench-task-env@sha256:9fd1ada3d689090e01de21a9189e51bb93d1613bdef375d425b8b83841975375",
   "citation-check": "ghcr.io/yiminnn/skillsbench-citation-check-env@sha256:8ba4740e9edfe7bb0d071c6e64f788e5652a47fc24fc0e7c74bdb2f896877233"
 }
