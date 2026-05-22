@@ -20,5 +20,9 @@
   "enterprise-information-search": "ghcr.io/yiminnn/skillsbench-task-env@sha256:13225f451ec10e6366a68bb769fb21c1e2d6ce3058feb859ab2f4f4fd61e73a3",
   "exam-block-sequencing": "ghcr.io/yiminnn/skillsbench-task-env@sha256:607259b2098062b471f7b83ef3066500f55bf10f226fb795823e477af8207b92",
   "exceltable-in-ppt": "ghcr.io/yiminnn/skillsbench-task-env@sha256:944f51bd1e2416262007e1a558a92650c2232176af06363cc6011ea94dad8526",
-  "exoplanet-detection-period": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8b2236ce91f0596922320b6b8284365ec2cdf7da868f8471f2bec347e615ff25"
+  "exoplanet-detection-period": "ghcr.io/yiminnn/skillsbench-task-env@sha256:8b2236ce91f0596922320b6b8284365ec2cdf7da868f8471f2bec347e615ff25",
+  "financial-modeling-qa": "ghcr.io/yiminnn/skillsbench-task-env@sha256:4ff9171878f6c16c5eff086eb0f144587ac8e3fa9962894a7804513eda59a82a",
+  "find-topk-similiar-chemicals": "ghcr.io/yiminnn/skillsbench-task-env@sha256:5995304f66cc473d2b6a8c1e1152a2d53e9eb414d71d4dc37b539ed442f1acdf",
+  "fix-visual-stability": "ghcr.io/yiminnn/skillsbench-task-env@sha256:1c2a58a8e6be0fa1996a2d2c18730aa9510e0c83b818853491d5f1a8688f42b3",
+  "flink-query": "ghcr.io/yiminnn/skillsbench-task-env@sha256:5f60f63a7c5325c9b042506d8bdcdc9aa4cce471de5a127a3ad51e42bc76c1ec"
 }
